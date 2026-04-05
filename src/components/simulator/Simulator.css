@@ -1,0 +1,504 @@
+.simulator {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.simulator-progress {
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.simulator-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #143d24, #1a6530);
+  transition: width 0.3s ease;
+}
+
+.simulator-step-indicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.simulator-step-number {
+  font-size: 0.875rem;
+  color: #1a6530;
+  font-weight: 600;
+}
+
+.simulator-step-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #143d24;
+}
+
+.simulator-step h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #143d24;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.simulator-subtitle {
+  text-align: center;
+  color: #5a5a5a;
+  margin-bottom: 2rem;
+}
+
+.simulator-options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 500px) {
+  .simulator-options-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.simulator-option-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.simulator-option-card:hover {
+  border-color: #1a6530;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.simulator-option-card.selected {
+  border-color: #143d24;
+  background: #143d24;
+}
+
+.simulator-option-card.selected .simulator-option-label,
+.simulator-option-card.selected .simulator-option-desc {
+  color: white;
+}
+
+.simulator-option-emoji {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.simulator-option-label {
+  font-weight: 600;
+  color: #143d24;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.simulator-option-desc {
+  font-size: 0.875rem;
+  color: #5a5a5a;
+  line-height: 1.4;
+}
+
+.simulator-option-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem 1.25rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+  min-width: 120px;
+}
+
+.simulator-option-btn:hover {
+  border-color: #1a6530;
+}
+
+.simulator-option-btn.selected {
+  border-color: #143d24;
+  background: #f0fdf4;
+}
+
+.simulator-option-btn.selected::before {
+  content: '✓';
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  color: #1a6530;
+  font-weight: bold;
+}
+
+.simulator-option-btn span:first-child {
+  font-weight: 600;
+  color: #143d24;
+}
+
+.simulator-option-sub {
+  font-size: 0.8rem;
+  color: #5a5a5a;
+  margin-top: 0.25rem;
+}
+
+.simulator-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.simulator-form-group label {
+  display: block;
+  font-weight: 600;
+  color: #143d24;
+  margin-bottom: 0.75rem;
+}
+
+.simulator-options-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.simulator-checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+@media (max-width: 600px) {
+  .simulator-checkbox-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.simulator-checkbox-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.simulator-checkbox-card:hover {
+  border-color: #1a6530;
+}
+
+.simulator-checkbox-card.selected {
+  border-color: #143d24;
+  background: #f0fdf4;
+}
+
+.simulator-checkbox-input {
+  position: absolute;
+  opacity: 0;
+}
+
+.simulator-checkbox-emoji {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.simulator-checkbox-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #143d24;
+  text-align: center;
+}
+
+.simulator-radio-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.simulator-radio-card {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  gap: 1rem;
+}
+
+.simulator-radio-card:hover {
+  border-color: #1a6530;
+}
+
+.simulator-radio-card.selected {
+  border-color: #143d24;
+  background: #f0fdf4;
+}
+
+.simulator-radio-input {
+  display: none;
+}
+
+.simulator-radio-content {
+  flex: 1;
+}
+
+.simulator-radio-label {
+  display: block;
+  font-weight: 600;
+  color: #143d24;
+  margin-bottom: 0.25rem;
+}
+
+.simulator-radio-desc {
+  font-size: 0.875rem;
+  color: #5a5a5a;
+}
+
+.simulator-radio-price {
+  font-weight: 700;
+  color: #1a6530;
+  white-space: nowrap;
+}
+
+.simulator-radio-price.included {
+  background: #1a6530;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+}
+
+.simulator-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.simulator-form-field label {
+  display: block;
+  font-weight: 600;
+  color: #143d24;
+  margin-bottom: 0.5rem;
+}
+
+.simulator-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.simulator-input:focus {
+  outline: none;
+  border-color: #1a6530;
+}
+
+.simulator-form-help,
+.simulator-help {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #f8f8f5;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: #5a5a5a;
+}
+
+.simulator-help svg,
+.simulator-form-help svg {
+  color: #1a6530;
+  flex-shrink: 0;
+}
+
+.simulator-continue-btn,
+.simulator-submit-btn {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #143d24, #1a6530);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: all 0.2s ease;
+}
+
+.simulator-continue-btn:hover,
+.simulator-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(20, 61, 36, 0.3);
+}
+
+.simulator-continue-btn:disabled,
+.simulator-submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.simulator-recap-list {
+  background: #f8f8f5;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.simulator-recap-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.simulator-recap-item:last-child {
+  border-bottom: none;
+}
+
+.simulator-recap-label {
+  font-weight: 500;
+  color: #5a5a5a;
+}
+
+.simulator-recap-value {
+  font-weight: 600;
+  color: #143d24;
+  text-align: right;
+  max-width: 60%;
+}
+
+.simulator-recap-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: #f0fdf4;
+  border-radius: 10px;
+  border: 1px solid #1a6530;
+}
+
+.simulator-recap-note svg {
+  color: #1a6530;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.simulator-recap-note p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #143d24;
+  line-height: 1.5;
+}
+
+.simulator-nav {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.simulator-nav-back {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  color: #5a5a5a;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.simulator-nav-back:hover {
+  color: #143d24;
+}
+
+.simulator-nav-dots {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex: 1;
+}
+
+.simulator-nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  transition: all 0.2s ease;
+}
+
+.simulator-nav-dot.active {
+  background: #143d24;
+  width: 24px;
+  border-radius: 4px;
+}
+
+.simulator-nav-dot.completed {
+  background: #1a6530;
+}
+
+.simulator-nav-spacer {
+  width: 100px;
+}
+
+.simulator-complete {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.simulator-complete-icon {
+  width: 80px;
+  height: 80px;
+  background: #1a6530;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.simulator-complete-icon svg {
+  color: white;
+}
+
+.simulator-complete h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #143d24;
+  margin-bottom: 0.5rem;
+}
+
+.simulator-complete p {
+  color: #5a5a5a;
+  margin-bottom: 2rem;
+}
+
+.simulator-complete-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
