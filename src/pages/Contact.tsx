@@ -56,12 +56,12 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-[#143d24] mb-4">
-              Demandez votre devis gratuit
+              Parlons de votre projet
             </h1>
             <p className="text-[#5a5a5a] text-lg max-w-2xl mx-auto">
               {useSimulator 
                 ? 'Répondez à quelques questions pour obtenir une estimation personnalisée'
-                : 'Vous avez un projet de débarras ? N\'hésitez pas à nous contacter'}
+                : 'Décrivez votre besoin et nous vous recontacterons rapidement'}
             </p>
           </div>
 
