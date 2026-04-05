@@ -44,13 +44,16 @@ export default function StepRecapitulatif({ data, onNext }: StepProps) {
     { label: 'Objets', value: selectedObjects.map(o => o.label).join(', ') || '-' },
     { label: 'Nettoyage', value: selectedCleaning?.label || 'Non' },
     { label: 'Localisation', value: data.lieu ? `${data.lieu} (${data.codePostal})` : '-' },
+    { label: 'Nom', value: data.nom || '-' },
+    { label: 'E-mail', value: data.email || '-' },
+    { label: 'Téléphone', value: data.telephone || '-' },
   ];
 
   return (
     <div className="simulator-step">
       <h2>Récapitulatif de votre demande</h2>
-      <p className="simulator-subtitle">Verifiez les informations avant de valider</p>
-      
+      <p className="simulator-subtitle">Vérifiez les informations avant de valider</p>
+
       <div className="simulator-recap-list">
         {recapItems.map((item, index) => (
           <div key={index} className="simulator-recap-item">

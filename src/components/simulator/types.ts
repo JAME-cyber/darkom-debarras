@@ -10,6 +10,9 @@ export interface SimulatorData {
   lieu: string;
   codePostal: string;
   codeDepartement: string;
+  nom: string;
+  email: string;
+  telephone: string;
 }
 
 export interface StepProps {
