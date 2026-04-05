@@ -15,7 +15,7 @@ export default function StepAccessibilite({ data, onNext }: StepProps) {
 
   const accessibiliteOptions = [
     { id: 'facile', label: 'Accès facile', desc: 'Portes larges, passage dégagé' },
-    { id: 'difficile', label: 'Accès difficile', desc: 'Escaliers étroits, tourne对象' },
+    { id: 'difficile', label: 'Accès difficile', desc: 'Escaliers étroits, tournants' },
     { id: 'tres_difficile', label: 'Très difficile', desc: 'Spirale, hauteur, sous-sol' },
   ];
 

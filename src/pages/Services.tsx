@@ -58,7 +58,7 @@ const services = [
       "Approche respectueuse",
       "Valorisation du patrimoine",
       "Accompagnement familial",
-      "Gestion des objets纪念ifiques"
+      "Gestion des objets spécifiques"
     ]
   },
   {

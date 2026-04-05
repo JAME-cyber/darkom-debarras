@@ -2,11 +2,11 @@ import type { StepProps } from './types';
 
 const BIEN_TYPES = [
   { id: 'maison', label: 'Maison', emoji: '🏠', desc: 'Maison individuelle' },
-  { id: 'appartement', label: 'Appartement', emoji: '🏢', desc: '公寓' },
-  { id: 'cave', label: 'Cave', emoji: '🏚️', desc: '地下室/储藏室' },
-  { id: 'grenier', label: 'Grenier', emoji: '🏰', desc: '阁楼' },
-  { id: 'garage', label: 'Garage', emoji: '🚗', desc: '车库' },
-  { id: 'local', label: 'Local professionnel', emoji: '🏬', desc: '商业空间' },
+  { id: 'appartement', label: 'Appartement', emoji: '🏢', desc: 'Appartement individuel ou collectif' },
+  { id: 'cave', label: 'Cave', emoji: '🏚️', desc: 'Sous-sol / espace de stockage' },
+  { id: 'grenier', label: 'Grenier', emoji: '🏰', desc: 'Combles / grenier' },
+  { id: 'garage', label: 'Garage', emoji: '🚗', desc: 'Garage individuel' },
+  { id: 'local', label: 'Local professionnel', emoji: '🏬', desc: 'Espace commercial / bureaux' },
 ];
 
 export default function StepBien({ data, onNext }: StepProps) {
