@@ -1,5 +1,5 @@
 import type { StepProps } from './types';
-import { SERVICE_TYPES, VOLUME_ESTIMATES, CLEANING_OPTIONS, OBJECT_OPTIONS } from './types';
+import { SERVICE_TYPES, VOLUME_ESTIMATES, CLEANING_OPTIONS, OBJECT_OPTIONS, estimatePrice } from './types';
 
 const BIEN_LABELS: Record<string, string> = {
   maison: 'Maison',
@@ -33,6 +33,7 @@ export default function StepRecapitulatif({ data, onNext }: StepProps) {
   const selectedVolume = VOLUME_ESTIMATES[data.volume || ''];
   const selectedCleaning = CLEANING_OPTIONS.find(o => o.id === data.optionNettoyage);
   const selectedObjects = OBJECT_OPTIONS.filter(o => (data.objetsSpeciaux || []).includes(o.id));
+  const price = estimatePrice(data);
 
   const recapItems = [
     { label: 'Service', value: selectedService?.label || '-' },
@@ -61,6 +62,12 @@ export default function StepRecapitulatif({ data, onNext }: StepProps) {
             <span className="simulator-recap-value">{item.value}</span>
           </div>
         ))}
+      </div>
+
+      <div className="simulator-price-estimate">
+        <span className="simulator-price-label">Devis estimatif</span>
+        <span className="simulator-price-value">{price.min}€ – {price.max}€</span>
+        <span className="simulator-price-info">Estimation indicative, prix final confirmé par téléphone</span>
       </div>
 
       <div className="simulator-recap-note">

@@ -64,6 +64,38 @@ export const VOLUME_ESTIMATES: Record<string, string> = {
   'local': '30-100+ m³',
 };
 
+const VOLUME_PRICES: Record<string, [number, number]> = {
+  'studio': [200, 400],
+  't1-t2': [400, 800],
+  't3-t4': [800, 1500],
+  't5+': [1500, 3000],
+  'cave': [200, 500],
+  'grenier': [300, 700],
+  'garage': [250, 600],
+  'local': [500, 2000],
+};
+
+const ETAGE_SUPPLEMENT: Record<string, number> = {
+  'rdc': 0,
+  '1': 50,
+  '2': 100,
+  '3': 200,
+};
+
+const ACCESSIBLE_SUPPLEMENT: Record<string, number> = {
+  'facile': 0,
+  'difficile': 100,
+  'tres_difficile': 250,
+};
+
+export function estimatePrice(data: SimulatorData): { min: number; max: number } {
+  const [baseMin, baseMax] = VOLUME_PRICES[data.volume] || [300, 800];
+  const etageSupp = data.ascenseur === 'non' ? ETAGE_SUPPLEMENT[data.etage] || 0 : 0;
+  const accessSupp = ACCESSIBLE_SUPPLEMENT[data.accessible] || 0;
+  const cleaning = CLEANING_OPTIONS.find(o => o.id === data.optionNettoyage)?.price || 0;
+  return { min: baseMin + etageSupp + accessSupp + cleaning, max: baseMax + etageSupp + accessSupp + cleaning };
+}
+
 export const SERVICE_TYPES: Record<string, { label: string; emoji: string; description: string }> = {
   'debarras': { 
     label: 'Débarras simple', 

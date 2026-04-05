@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { SimulatorData } from './types';
-import { CLEANING_OPTIONS, SERVICE_TYPES } from './types';
+import { SERVICE_TYPES, estimatePrice } from './types';
 import StepServiceType from './StepServiceType';
 import StepBien from './StepBien';
 import StepVolume from './StepVolume';
@@ -41,47 +41,6 @@ const STEPS = [
   { key: 'contact', component: StepContact, title: 'Vos coordonnées' },
   { key: 'recap', component: StepRecapitulatif, title: 'Récapitulatif' },
 ];
-
-const VOLUME_PRICES: Record<string, [number, number]> = {
-  'studio': [200, 400],
-  't1-t2': [400, 800],
-  't3-t4': [800, 1500],
-  't5+': [1500, 3000],
-  'cave': [200, 500],
-  'grenier': [300, 700],
-  'garage': [250, 600],
-  'local': [500, 2000],
-};
-
-const ETAGE_SUPPLEMENT: Record<string, number> = {
-  'rdc': 0,
-  '1': 50,
-  '2': 100,
-  '3': 200,
-};
-
-const ACCESSIBLE_SUPPLEMENT: Record<string, number> = {
-  'facile': 0,
-  'difficile': 100,
-  'tres_difficile': 250,
-};
-
-function estimatePrice(data: SimulatorData): { min: number; max: number } {
-  const [baseMin, baseMax] = VOLUME_PRICES[data.volume] || [300, 800];
-
-  const etageSupp = data.ascenseur === 'non'
-    ? ETAGE_SUPPLEMENT[data.etage] || 0
-    : 0;
-
-  const accessSupp = ACCESSIBLE_SUPPLEMENT[data.accessible] || 0;
-
-  const cleaning = CLEANING_OPTIONS.find(o => o.id === data.optionNettoyage)?.price || 0;
-
-  const min = baseMin + etageSupp + accessSupp + cleaning;
-  const max = baseMax + etageSupp + accessSupp + cleaning;
-
-  return { min, max };
-}
 
 export default function Simulator() {
   const [currentStep, setCurrentStep] = useState(0);
