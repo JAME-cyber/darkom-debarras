@@ -25,10 +25,11 @@ export default function StepNettoyage({ data, onNext }: StepProps) {
               <span className="simulator-radio-label">{option.label}</span>
               <span className="simulator-radio-desc">{option.sublabel}</span>
             </div>
-            {option.price > 0 && (
+            {(option as any).onDemand ? (
+              <span className="simulator-radio-price included">Optionnel sur demande</span>
+            ) : option.price > 0 ? (
               <span className="simulator-radio-price">+{option.price}€</span>
-            )}
-            {option.price === 0 && (
+            ) : (
               <span className="simulator-radio-price included">Inclus</span>
             )}
           </label>

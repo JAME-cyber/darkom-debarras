@@ -43,13 +43,15 @@ export const CLEANING_OPTIONS = [
     id: 'nettoyage', 
     label: 'Nettoyage complet', 
     sublabel: '(aspiration, lessivage, vitres, sanitaires)',
-    price: 80
+    price: 0,
+    onDemand: true
   },
   { 
     id: 'insalubre', 
     label: 'Nettoyage logement insalubre + désinfection', 
     sublabel: '(traitement specialisé)',
-    price: 200
+    price: 0,
+    onDemand: true
   },
 ];
 
