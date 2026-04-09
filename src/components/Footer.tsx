@@ -24,7 +24,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <Link to="/" className="inline-block mb-6">
-              <img src={logo} alt="Darkom-Debarras" className="h-10 w-auto" />
+              <img src={logo} alt="Darkom-Debarras" className="h-10 md:h-12 max-w-[140px] md:max-w-[180px] w-auto object-contain" />
             </Link>
             <p className="text-white/70 text-sm mb-6">
               Libérez votre espace, simplifiez votre vie. Professionnels du débarras en Haute-Savoie.
