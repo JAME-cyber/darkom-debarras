@@ -91,16 +91,16 @@ export default function APropos() {
             
             <div className="max-w-3xl mx-auto">
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 text-center">
-                <div className="w-16 h-16 bg-[#143d24] rounded-xl flex items-center justify-center mx-auto mb-6">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
+                <div className="w-20 h-20 bg-[#143d24] rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-2xl font-bold text-white">LD</span>
                 </div>
+                <h3 className="text-xl font-bold text-[#143d24] mb-1">Laurie Decouvette</h3>
+                <p className="text-[#a0ab37] font-semibold mb-4">Fondatrice &amp; Gérante</p>
                 <p className="text-[#5a5a5a] text-lg mb-4">
-                  Des professionnels à votre service — une équipe expérimentée, qualifiée et passionnée par son métier. Chaque membre met son expertise au service de votre satisfaction, avec rigueur, respect et savoir-faire.
+                  Passionnée par son métier, Laurie a fondé Darkom-Debarras avec la conviction qu'un service de débarras peut être à la fois professionnel, humain et écoresponsable.
                 </p>
                 <p className="text-[#5a5a5a]">
-                  Du premier contact à la finalisation de l'intervention, nous vous garantissons un accompagnement humain et professionnel. Notre équipe intervient avec soin, efficacité et dans le respect total de votre espace et de vos biens.
+                  Entourée d'une équipe expérimentée et dévouée, elle veille personnellement à la satisfaction de chaque client. Du premier contact à la finalisation de l'intervention, Laurie et son équipe vous garantissent un accompagnement soigné, efficace et dans le respect total de votre espace et de vos biens.
                 </p>
               </div>
             </div>
