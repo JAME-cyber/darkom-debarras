@@ -98,8 +98,8 @@ export default function Services() {
     <main className="pt-28">
       <div className="relative h-64 md:h-80 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1526384133018-201452728d6c?auto=format&fit=crop&w=1600&q=80"
-          alt="Déménageurs professionnels déchargeant des meubles"
+          src="https://plus.unsplash.com/premium_photo-1769792494332-b835b6df932c?auto=format&fit=crop&w=1600&q=80"
+          alt="Livreur professionnel transportant un meuble"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-[#143d24]/70 flex items-center justify-center">
