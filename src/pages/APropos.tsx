@@ -53,7 +53,7 @@ export default function APropos() {
                 Fondé à Fillinges en Haute-Savoie, Darkom-Debarras est votre partenaire de confiance pour tous vos projets de débarras.
               </p>
               <p className="text-[#5a5a5a] mb-6">
-                Avec 3 professionnels passionnés, nous nous engageons à vous offrir un service premium tout en restant accessibles. Notre philosophie : libérer votre espace tout en respectant l'environnement.
+                Avec des professionnels passionnés, nous nous engageons à vous offrir un service premium tout en restant accessibles. Notre philosophie : libérer votre espace tout en respectant l'environnement.
               </p>
               <p className="text-[#5a5a5a] mb-8">
                 Chaque intervention est pour nous l'occasion de créer un espace de vie plus agréable pour nos clients, tout en contribuant à une économie circulaire locale par le tri, le recyclage et les dons aux associations.
