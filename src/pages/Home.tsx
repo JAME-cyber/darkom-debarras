@@ -108,11 +108,11 @@ export default function Home() {
                 </Button>
               </div>
               <div className="hidden lg:block">
-                <div className="bg-gradient-to-br from-[#143d24] to-[#1a6530] rounded-2xl p-8 text-white text-center">
-                  <div className="text-5xl mb-4">📊</div>
-                  <p className="text-2xl font-bold mb-2">Estimation en ligne</p>
-                  <p className="text-white/80">Gratuit • Rapide • Sans engagement</p>
-                </div>
+                <img
+                  src="https://images.unsplash.com/photo-1700165644892-3dd6b67b25bc?auto=format&fit=crop&w=800&q=80"
+                  alt="Cartons de déménagement pour estimation en ligne"
+                  className="rounded-2xl shadow-xl object-cover w-full h-80"
+                />
               </div>
             </div>
           </div>

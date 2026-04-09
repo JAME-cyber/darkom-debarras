@@ -73,16 +73,29 @@ const process = [
 
 export default function Tarifs() {
   return (
-    <main className="pt-32">
+    <main className="pt-28">
+      <div className="relative h-64 md:h-80 overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1663091386564-f8c07caad36e?auto=format&fit=crop&w=1600&q=80"
+          alt="Nettoyage professionnel d'intérieur"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-[#143d24]/70 flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Nos tarifs
+            </h1>
+            <p className="text-white/80 text-lg max-w-2xl mx-auto">
+              Des tarifs clairs et transparents. Devis gratuit et sans engagement
+            </p>
+          </div>
+        </div>
+      </div>
+
       <section className="py-20 bg-[#f8f8f5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-[#143d24] mb-4">
-              Nos tarifs
-            </h1>
-            <p className="text-[#5a5a5a] text-lg max-w-2xl mx-auto">
-              Des tarifs clairs et transparents. Devis gratuit et sans engagement
-            </p>
+            <h2 className="sr-only">Nos tarifs</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

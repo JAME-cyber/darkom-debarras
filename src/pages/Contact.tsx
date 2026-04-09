@@ -51,18 +51,31 @@ export default function Contact() {
   }
 
   return (
-    <main className="pt-24">
-      <section className="py-20 bg-[#f8f8f5]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-[#143d24] mb-4">
+    <main className="pt-28">
+      <div className="relative h-64 md:h-80 overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1758876017967-c023c40c0a53?auto=format&fit=crop&w=1600&q=80"
+          alt="Service client professionnel"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-[#143d24]/70 flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Parlons de votre projet
             </h1>
-            <p className="text-[#5a5a5a] text-lg max-w-2xl mx-auto">
+            <p className="text-white/80 text-lg max-w-2xl mx-auto">
               {useSimulator 
                 ? 'Répondez à quelques questions pour obtenir une estimation personnalisée'
                 : 'Décrivez votre besoin et nous vous recontacterons rapidement'}
             </p>
+          </div>
+        </div>
+      </div>
+
+      <section className="py-20 bg-[#f8f8f5]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="sr-only">Contact</h2>
           </div>
 
           <div className="flex justify-center mb-8">

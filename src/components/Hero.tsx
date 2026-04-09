@@ -52,19 +52,11 @@ export default function Hero() {
           </div>
 
           <div className="relative">
-            <div className="aspect-square bg-gradient-to-br from-[#143d24] to-[#1a6530] rounded-3xl p-8 shadow-2xl">
-              <div className="w-full h-full bg-white/10 rounded-2xl flex items-center justify-center">
-                <div className="text-center text-white">
-                  <div className="w-24 h-24 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center">
-                    <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                    </svg>
-                  </div>
-                  <p className="text-xl font-semibold">Débarras rapide</p>
-                  <p className="text-white/80 mt-2">et professionnel</p>
-                </div>
-              </div>
-            </div>
+            <img
+              src="https://images.unsplash.com/photo-1714647211923-a3881cd1300f?auto=format&fit=crop&w=800&q=80"
+              alt="Professionnels du débarras avec cartons de déménagement"
+              className="aspect-square object-cover rounded-3xl shadow-2xl"
+            />
             
             <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-xl p-4 flex items-center gap-3">
               <div className="w-12 h-12 bg-[#1a6530]/10 rounded-lg flex items-center justify-center">

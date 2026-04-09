@@ -95,16 +95,29 @@ const services = [
 
 export default function Services() {
   return (
-    <main className="pt-32">
+    <main className="pt-28">
+      <div className="relative h-64 md:h-80 overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1625314563148-572c6af9e9d5?auto=format&fit=crop&w=1600&q=80"
+          alt="Professionnels du débarras"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-[#143d24]/70 flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Nos services
+            </h1>
+            <p className="text-white/80 text-lg max-w-2xl mx-auto">
+              Des solutions complètes pour tous vos besoins de débarras en Haute-Savoie
+            </p>
+          </div>
+        </div>
+      </div>
+
       <section className="py-20 bg-[#f8f8f5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-[#143d24] mb-4">
-              Nos services
-            </h1>
-            <p className="text-[#5a5a5a] text-lg max-w-2xl mx-auto">
-              Des solutions complètes pour tous vos besoins de débarras en Haute-Savoie
-            </p>
+            <h2 className="sr-only">Nos services</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
