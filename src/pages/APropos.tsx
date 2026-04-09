@@ -65,8 +65,8 @@ export default function APropos() {
             
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1625314563148-572c6af9e9d5?auto=format&fit=crop&w=800&q=80"
-                alt="Professionnels du débarras et nettoyage"
+              src="https://plus.unsplash.com/premium_photo-1664300914931-76c0f99a96b8?auto=format&fit=crop&w=800&q=80"
+              alt="Équipe de déménageurs professionnels portant des cartons"
                 className="aspect-square object-cover rounded-3xl shadow-2xl"
               />
               
