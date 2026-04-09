@@ -17,7 +17,7 @@ export default function Header() {
   const location = useLocation();
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-sm z-50">
+    <header className="fixed top-0 left-0 right-0 bg-[#143d24] text-white z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-28">
           <Link to="/" className="flex items-center py-2">
@@ -29,10 +29,10 @@ export default function Header() {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`text-sm font-medium transition-colors hover:text-[#1a6530] ${
+                className={`text-sm font-medium transition-colors hover:text-white/80 ${
                   location.pathname === link.to 
-                    ? 'text-[#143d24]' 
-                    : 'text-[#5a5a5a]'
+                    ? 'text-white' 
+                    : 'text-white/70'
                 }`}
               >
                 {link.label}
@@ -49,7 +49,7 @@ export default function Header() {
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Menu"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (
@@ -60,7 +60,7 @@ export default function Header() {
         </div>
 
         {isOpen && (
-          <nav className="md:hidden py-4 border-t border-gray-100">
+          <nav className="md:hidden py-4 border-t border-white/20">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
@@ -68,8 +68,8 @@ export default function Header() {
                 onClick={() => setIsOpen(false)}
                 className={`block py-2 text-base font-medium ${
                   location.pathname === link.to 
-                    ? 'text-[#143d24]' 
-                    : 'text-[#5a5a5a]'
+                    ? 'text-white' 
+                    : 'text-white/70'
                 }`}
               >
                 {link.label}
