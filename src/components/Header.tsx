@@ -19,9 +19,9 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 bg-[#143d24] text-white z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-28">
-          <Link to="/" className="flex items-center py-2">
-            <img src={logo} alt="Darkom-Debarras" className="h-[88px] w-auto" />
+        <div className="flex justify-between items-center h-16 sm:h-20 md:h-28">
+          <Link to="/" className="flex items-center py-1">
+            <img src={logo} alt="Darkom-Debarras" className="h-10 sm:h-14 md:h-[88px] w-auto" />
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">

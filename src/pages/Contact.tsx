@@ -51,19 +51,19 @@ export default function Contact() {
   }
 
   return (
-    <main className="pt-28">
-      <div className="relative h-64 md:h-80 overflow-hidden">
+    <main className="pt-16 sm:pt-20 md:pt-28">
+      <div className="relative h-48 sm:h-64 md:h-80 overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1758876017967-c023c40c0a53?auto=format&fit=crop&w=1600&q=80"
           alt="Service client professionnel"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-[#143d24]/70 flex items-center justify-center">
+        <div className="absolute inset-0 bg-[#143d24]/70 flex items-center justify-center px-4">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-4">
               Parlons de votre projet
             </h1>
-            <p className="text-white/80 text-lg max-w-2xl mx-auto">
+            <p className="text-white/80 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
               {useSimulator 
                 ? 'Répondez à quelques questions pour obtenir une estimation personnalisée'
                 : 'Décrivez votre besoin et nous vous recontacterons rapidement'}
@@ -72,7 +72,7 @@ export default function Contact() {
         </div>
       </div>
 
-      <section className="py-20 bg-[#f8f8f5]">
+      <section className="py-10 sm:py-16 md:py-20 bg-[#f8f8f5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="sr-only">Contact</h2>
@@ -121,7 +121,7 @@ export default function Contact() {
             ) : (
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div className="lg:col-span-2">
-                  <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 shadow-lg">
+                  <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                       <div>
                         <label htmlFor="nom" className="block text-sm font-medium text-[#1a1a1a] mb-2">

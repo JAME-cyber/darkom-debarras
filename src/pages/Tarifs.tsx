@@ -73,26 +73,26 @@ const process = [
 
 export default function Tarifs() {
   return (
-    <main className="pt-28">
-      <div className="relative h-64 md:h-80 overflow-hidden">
+    <main className="pt-16 sm:pt-20 md:pt-28">
+      <div className="relative h-48 sm:h-64 md:h-80 overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1663091386564-f8c07caad36e?auto=format&fit=crop&w=1600&q=80"
           alt="Nettoyage professionnel d'intérieur"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-[#143d24]/70 flex items-center justify-center">
+        <div className="absolute inset-0 bg-[#143d24]/70 flex items-center justify-center px-4">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-4">
               Nos tarifs
             </h1>
-            <p className="text-white/80 text-lg max-w-2xl mx-auto">
+            <p className="text-white/80 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
               Des tarifs clairs et transparents. Devis gratuit et sans engagement
             </p>
           </div>
         </div>
       </div>
 
-      <section className="py-20 bg-[#f8f8f5]">
+      <section className="py-10 sm:py-16 md:py-20 bg-[#f8f8f5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="sr-only">Nos tarifs</h2>
@@ -102,9 +102,9 @@ export default function Tarifs() {
             {pricing.map((plan, index) => (
               <div 
                 key={index}
-                className={`bg-white rounded-2xl p-8 shadow-lg transition-all duration-300 ${
+                className={`bg-white rounded-2xl p-6 sm:p-8 shadow-lg transition-all duration-300 ${
                   plan.featured 
-                    ? 'ring-2 ring-[#a0ab37] scale-105' 
+                    ? 'ring-2 ring-[#a0ab37] md:scale-105' 
                     : 'hover:shadow-xl border border-gray-100'
                 }`}
               >

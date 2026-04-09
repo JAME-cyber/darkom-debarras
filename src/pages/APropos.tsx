@@ -41,15 +41,15 @@ const values = [
 
 export default function APropos() {
   return (
-    <main className="pt-32">
-      <section className="py-20 bg-[#f8f8f5]">
+    <main className="pt-16 sm:pt-20 md:pt-32">
+      <section className="py-10 sm:py-16 md:py-20 bg-[#f8f8f5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-12 md:mb-20">
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-[#143d24] mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#143d24] mb-4 sm:mb-6">
                 À propos de Darkom-Debarras
               </h1>
-              <p className="text-[#5a5a5a] text-lg mb-6">
+              <p className="text-[#5a5a5a] text-base sm:text-lg mb-4 sm:mb-6">
                 Fondé à Fillinges en Haute-Savoie, Darkom-Debarras est votre partenaire de confiance pour tous vos projets de débarras.
               </p>
               <p className="text-[#5a5a5a] mb-6">
