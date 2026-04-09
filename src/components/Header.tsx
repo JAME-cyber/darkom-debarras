@@ -21,7 +21,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14 sm:h-16 md:h-20">
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="Darkom-Debarras" className="h-9 sm:h-10 md:h-14 w-auto" />
+            <img src={logo} alt="Darkom-Debarras" className="h-7 sm:h-8 w-auto" />
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
