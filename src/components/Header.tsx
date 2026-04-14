@@ -7,6 +7,7 @@ const navLinks = [
   { to: '/services', label: 'Services' },
   { to: '/realisations', label: 'Réalisations' },
   { to: '/tarifs', label: 'Tarifs' },
+  { to: '/faq', label: 'FAQ' },
   { to: '/a-propos', label: 'À Propos' },
   { to: '/contact', label: 'Contact' },
 ];
@@ -23,24 +24,36 @@ export default function Header() {
             <span className="text-lg sm:text-xl font-bold tracking-tight">Darkom-Debarras</span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className={`text-sm font-medium transition-colors hover:text-white/80 ${
-                  location.pathname === link.to 
-                    ? 'text-white' 
-                    : 'text-white/70'
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+          <div className="flex items-center gap-4 md:gap-8">
+            <nav className="hidden md:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className={`text-sm font-medium transition-colors hover:text-white/80 ${
+                    location.pathname === link.to 
+                      ? 'text-white' 
+                      : 'text-white/70'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
 
-          <div className="hidden md:block">
-            <Button to="/contact">Devis gratuit</Button>
+            <div className="hidden md:block">
+              <Button to="/contact">Devis gratuit</Button>
+            </div>
+
+            <a
+              href="tel:+33612345678"
+              className="md:hidden flex items-center gap-1.5 text-[#a0ab37] hover:text-[#b4bd4a] transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <span className="text-sm font-semibold">06 XX XX XX XX</span>
+            </a>
           </div>
 
           <button

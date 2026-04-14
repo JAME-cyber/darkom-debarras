@@ -1,6 +1,7 @@
 import Hero from '../components/Hero';
 import ServiceCard from '../components/ServiceCard';
 import Testimonials from '../components/Testimonial';
+import InterventionMap from '../components/InterventionMap';
 import Button from '../components/Button';
 
 const services = [
@@ -67,6 +68,8 @@ export default function Home() {
       </section>
 
       <Testimonials />
+
+      <InterventionMap />
 
       <section className="py-20 bg-[#f8f8f5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
