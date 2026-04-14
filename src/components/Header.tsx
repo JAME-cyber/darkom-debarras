@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Button from './Button';
-import logo from '../assets/logo_darkom.jpg';
 
 const navLinks = [
   { to: '/', label: 'Accueil' },
@@ -21,7 +20,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14 sm:h-16 md:h-20">
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="Darkom-Debarras" className="h-10 sm:h-12 md:h-14 w-auto object-contain" />
+            <span className="text-lg sm:text-xl font-bold tracking-tight">Darkom-Debarras</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">

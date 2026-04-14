@@ -11,6 +11,7 @@ import StepLocalisation from './StepLocalisation';
 import StepContact from './StepContact';
 import StepRecapitulatif from './StepRecapitulatif';
 import SimulatorNavigation from './SimulatorNavigation';
+import { sendSimulatorEmail } from '../../services/emailService';
 import './Simulator.css';
 
 const initialData: SimulatorData = {
@@ -46,6 +47,8 @@ export default function Simulator() {
   const [currentStep, setCurrentStep] = useState(0);
   const [data, setData] = useState<SimulatorData>(initialData);
   const [isComplete, setIsComplete] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [sendError, setSendError] = useState('');
 
   const handleNext = (stepData: Partial<SimulatorData>) => {
     const newData = { ...data, ...stepData };
@@ -54,7 +57,39 @@ export default function Simulator() {
     if (currentStep < STEPS.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
+      handleComplete(newData);
+    }
+  };
+
+  const handleComplete = async (finalData: SimulatorData) => {
+    setIsSending(true);
+    setSendError('');
+    const price = estimatePrice(finalData);
+    const serviceName = SERVICE_TYPES[finalData.typeBien]?.label || '';
+    try {
+      await sendSimulatorEmail({
+        nom: finalData.nom,
+        email: finalData.email,
+        telephone: finalData.telephone,
+        service: serviceName,
+        typeBien: finalData.typeBien,
+        surface: finalData.surface,
+        etage: finalData.etage,
+        ascenseur: finalData.ascenseur,
+        volume: finalData.volume,
+        accessible: finalData.accessible,
+        objetsSpeciaux: finalData.objetsSpeciaux,
+        optionNettoyage: finalData.optionNettoyage,
+        lieu: finalData.lieu,
+        codePostal: finalData.codePostal,
+        prixMin: String(price.min),
+        prixMax: String(price.max),
+      });
       setIsComplete(true);
+    } catch {
+      setSendError('Erreur lors de l\'envoi. Veuillez réessayer.');
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -78,30 +113,7 @@ export default function Simulator() {
 
   return (
     <div className="simulator">
-      {!isComplete ? (
-        <>
-          <div className="simulator-progress">
-            <div className="simulator-progress-bar" style={{ width: `${progress}%` }}></div>
-          </div>
-
-          <div className="simulator-step-indicator">
-            <span className="simulator-step-number">Étape {currentStep + 1} / {STEPS.length}</span>
-            <span className="simulator-step-title">{STEPS[currentStep].title}</span>
-          </div>
-
-          <CurrentStepComponent
-            data={data}
-            onNext={handleNext}
-            onBack={handleBack}
-          />
-
-          <SimulatorNavigation
-            currentStep={currentStep}
-            totalSteps={STEPS.length}
-            onBack={handleBack}
-          />
-        </>
-      ) : (
+      {isComplete ? (
         <div className="simulator-complete">
           <div className="simulator-complete-icon">
             <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -129,6 +141,49 @@ export default function Simulator() {
             </button>
           </div>
         </div>
+      ) : isSending ? (
+        <div className="simulator-complete">
+          <div className="simulator-complete-icon">
+            <svg className="w-16 h-16 animate-spin" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+          </div>
+          <h3>Envoi en cours...</h3>
+          <p>Votre demande est en cours d'envoi, veuillez patienter.</p>
+        </div>
+      ) : (
+        <>
+          {sendError && (
+            <div style={{ textAlign: 'center', padding: '1rem', color: '#dc2626', marginBottom: '1rem' }}>
+              <p>{sendError}</p>
+              <button onClick={() => setSendError('')} className="simulator-continue-btn" style={{ width: 'auto', marginTop: '0.5rem' }}>
+                Réessayer
+              </button>
+            </div>
+          )}
+
+          <div className="simulator-progress">
+            <div className="simulator-progress-bar" style={{ width: `${progress}%` }}></div>
+          </div>
+
+          <div className="simulator-step-indicator">
+            <span className="simulator-step-number">Étape {currentStep + 1} / {STEPS.length}</span>
+            <span className="simulator-step-title">{STEPS[currentStep].title}</span>
+          </div>
+
+          <CurrentStepComponent
+            data={data}
+            onNext={handleNext}
+            onBack={handleBack}
+          />
+
+          <SimulatorNavigation
+            currentStep={currentStep}
+            totalSteps={STEPS.length}
+            onBack={handleBack}
+          />
+        </>
       )}
     </div>
   );

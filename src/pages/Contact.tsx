@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button from '../components/Button';
 import Simulator from '../components/simulator/Simulator';
+import { sendContactEmail } from '../services/emailService';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -11,11 +12,22 @@ export default function Contact() {
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
   const [useSimulator, setUseSimulator] = useState(true);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError('');
+    try {
+      await sendContactEmail(formData);
+      setSubmitted(true);
+    } catch {
+      setError('Une erreur est survenue. Veuillez réessayer ou nous contacter par téléphone.');
+    } finally {
+      setSending(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -210,8 +222,11 @@ export default function Contact() {
                       />
                     </div>
 
+                    {error && (
+                      <p className="text-red-600 text-sm mb-4 text-center">{error}</p>
+                    )}
                     <Button type="submit" variant="primary" className="w-full">
-                      Envoyer ma demande de devis
+                      {sending ? 'Envoi en cours...' : 'Envoyer ma demande de devis'}
                     </Button>
                   </form>
                 </div>

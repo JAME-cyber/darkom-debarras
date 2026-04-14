@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo_darkom.jpg';
 
 const services = [
   { to: '/services', label: 'Débarras maison' },
@@ -24,7 +23,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <Link to="/" className="inline-block mb-6">
-              <img src={logo} alt="Darkom-Debarras" className="h-14 sm:h-16 md:h-20 w-auto object-contain" />
+              <span className="text-xl font-bold tracking-tight">Darkom-Debarras</span>
             </Link>
             <p className="text-white/70 text-sm mb-6">
               Libérez votre espace, simplifiez votre vie. Professionnels du débarras en Haute-Savoie.
