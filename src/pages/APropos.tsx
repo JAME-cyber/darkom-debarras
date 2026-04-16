@@ -1,4 +1,5 @@
 import Button from '../components/Button';
+import logoAPropos from '../assets/a_propos.png';
 
 const values = [
   {
@@ -63,22 +64,27 @@ export default function APropos() {
               </Button>
             </div>
             
-            <div className="relative">
-              <img
-              src="https://plus.unsplash.com/premium_photo-1664300914931-76c0f99a96b8?auto=format&fit=crop&w=800&q=80"
-              alt="Équipe de déménageurs professionnels portant des cartons"
-                className="aspect-square object-cover rounded-3xl shadow-2xl"
-              />
-              
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-xl p-4 flex items-center gap-3">
-                <div className="w-12 h-12 bg-[#1a6530]/10 rounded-lg flex items-center justify-center">
-                  <svg className="w-6 h-6 text-[#1a6530]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
+            <div className="relative flex items-center justify-center">
+              <div className="w-full max-w-md bg-gradient-to-br from-[#143d24] to-[#1a6530] rounded-3xl shadow-2xl p-8 flex flex-col items-center gap-6">
+                <div className="bg-white rounded-2xl px-6 py-4 w-full flex flex-col items-center justify-center shadow-lg overflow-hidden max-w-[300px]">
+                  <img
+                    src={logoAPropos}
+                    alt="Logo Darkom Debarras – Solutions de débarras éco-responsables"
+                    style={{ height: '90px', width: 'auto', objectFit: 'contain' }}
+                  />
+                  <p className="font-bold text-[#143d24] text-center mt-2" style={{ fontSize: '10px', whiteSpace: 'normal', width: '100%' }}>
+                    SOLUTIONS DE DÉBARRAS ÉCO-RESPONSABLES
+                  </p>
                 </div>
-                <div>
-                  <p className="font-semibold text-[#143d24]">500+</p>
-                  <p className="text-sm text-[#5a5a5a]">Clients satisfaits</p>
+                <div className="grid grid-cols-2 gap-4 w-full">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center">
+                    <p className="text-3xl font-bold text-white">500+</p>
+                    <p className="text-white/70 text-sm mt-1">Clients satisfaits</p>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center">
+                    <p className="text-3xl font-bold text-white">48h</p>
+                    <p className="text-white/70 text-sm mt-1">Intervention rapide</p>
+                  </div>
                 </div>
               </div>
             </div>

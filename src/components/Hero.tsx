@@ -1,4 +1,5 @@
 import Button from './Button';
+import heroImage from '../assets/hero.png';
 
 export default function Hero() {
   return (
@@ -53,7 +54,7 @@ export default function Hero() {
 
           <div className="relative hidden lg:block">
             <img
-              src="https://images.unsplash.com/photo-1714647211923-a3881cd1300f?auto=format&fit=crop&w=800&q=80"
+              src={heroImage}
               alt="Professionnels du débarras avec cartons de déménagement"
               className="aspect-square object-cover rounded-3xl shadow-2xl"
             />

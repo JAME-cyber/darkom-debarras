@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import logoFooter from '../assets/footer.png';
 
 const services = [
   { to: '/services', label: 'Débarras maison' },
@@ -23,8 +24,17 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <Link to="/" className="inline-block mb-6">
-              <span className="text-xl font-bold tracking-tight">Darkom-Debarras</span>
+            <Link to="/" className="inline-block mb-4" aria-label="Darkom Debarras – Accueil">
+                <div className="bg-white rounded-xl px-4 py-2 inline-flex flex-col items-center shadow-md overflow-hidden max-w-[200px]">
+                <img
+                  src={logoFooter}
+                  alt="Logo Darkom Debarras"
+                  style={{ height: '70px', width: 'auto', objectFit: 'contain' }}
+                />
+                <p className="font-bold text-[#143d24] text-center mt-1" style={{ fontSize: '8px', whiteSpace: 'normal' }}>
+                  SOLUTIONS DE DÉBARRAS ÉCO-RESPONSABLES
+                </p>
+              </div>
             </Link>
             <p className="text-white/70 text-sm mb-6">
               Libérez votre espace, simplifiez votre vie. Professionnels du débarras en Haute-Savoie.
