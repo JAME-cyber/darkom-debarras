@@ -23,9 +23,8 @@ export default function Contact() {
     try {
       await sendContactEmail(formData);
       setSubmitted(true);
-    } catch (err: any) {
-      const detail = err?.text || err?.message || 'Erreur inconnue';
-      setError(`Erreur lors de l\'envoi (${detail}). Appelez-nous au 06 79 44 71 11 ou envoyez un email a darkom-debarras@hotmail.com`);
+    } catch {
+      setError('Une erreur est survenue. Appelez-nous au 06 79 44 71 11 ou envoyez un email à darkom-debarras@hotmail.com');
     } finally {
       setSending(false);
     }
