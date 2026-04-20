@@ -42,7 +42,7 @@ export default function Hero() {
                 <p className="text-xs sm:text-sm text-[#5a5a5a]">Professionnels</p>
               </div>
               <div>
-                <p className="text-2xl sm:text-3xl font-bold text-[#143d24]">500+</p>
+                <p className="text-2xl sm:text-3xl font-bold text-[#143d24]">100+</p>
                 <p className="text-xs sm:text-sm text-[#5a5a5a]">Clients satisfaits</p>
               </div>
               <div>

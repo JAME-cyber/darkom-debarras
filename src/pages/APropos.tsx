@@ -78,7 +78,7 @@ export default function APropos() {
                 </div>
                 <div className="grid grid-cols-2 gap-4 w-full">
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center">
-                    <p className="text-3xl font-bold text-white">500+</p>
+                    <p className="text-3xl font-bold text-white">100+</p>
                     <p className="text-white/70 text-sm mt-1">Clients satisfaits</p>
                   </div>
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center">
