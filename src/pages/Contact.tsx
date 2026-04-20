@@ -23,8 +23,9 @@ export default function Contact() {
     try {
       await sendContactEmail(formData);
       setSubmitted(true);
-    } catch {
-      setError('Une erreur est survenue. Veuillez réessayer ou nous contacter par téléphone.');
+    } catch (err: any) {
+      const detail = err?.text || err?.message || 'Erreur inconnue';
+      setError(`Erreur lors de l\'envoi (${detail}). Appelez-nous au 06 79 44 71 11 ou envoyez un email a darkom-debarras@hotmail.com`);
     } finally {
       setSending(false);
     }
@@ -257,8 +258,8 @@ export default function Contact() {
                         </div>
                         <div>
                           <p className="font-medium text-[#143d24]">Téléphone</p>
-                          <a href="tel:+33612345678" className="text-[#5a5a5a] text-sm hover:text-[#1a6530]">
-                            06 XX XX XX XX
+                          <a href="tel:+33679447111" className="text-[#5a5a5a] text-sm hover:text-[#1a6530]">
+                            06 79 44 71 11
                           </a>
                         </div>
                       </div>
@@ -271,8 +272,8 @@ export default function Contact() {
                         </div>
                         <div>
                           <p className="font-medium text-[#143d24]">Email</p>
-                          <a href="mailto:contact@darkom-debarras.fr" className="text-[#5a5a5a] text-sm hover:text-[#1a6530]">
-                            contact@darkom-debarras.fr
+                          <a href="mailto:darkom-debarras@hotmail.com" className="text-[#5a5a5a] text-sm hover:text-[#1a6530]">
+                            darkom-debarras@hotmail.com
                           </a>
                         </div>
                       </div>
@@ -297,13 +298,13 @@ export default function Contact() {
                       Nous comprenons que certains débarras ne peuvent pas attendre. Appelez-nous directement pour une intervention rapide.
                     </p>
                     <a 
-                      href="tel:+33612345678" 
+                      href="tel:+33679447111" 
                       className="inline-flex items-center justify-center w-full px-6 py-3 bg-[#a0ab37] hover:bg-[#b4bd4a] rounded-lg font-semibold transition-colors"
                     >
                       <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.047 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
-                      Appeler maintenant
+                      Appeler le 06 79 44 71 11
                     </a>
                   </div>
                 </div>
