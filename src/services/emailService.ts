@@ -43,6 +43,7 @@ export async function sendContactEmail(data: ContactFormData): Promise<void> {
 }
 
 export async function sendSimulatorEmail(data: SimulatorFormData): Promise<void> {
+  console.log('EmailJS config:', { SERVICE_ID, SIMULATOR_TEMPLATE_ID, PUBLIC_KEY: PUBLIC_KEY ? 'set' : 'missing' });
   await emailjs.send(SERVICE_ID, SIMULATOR_TEMPLATE_ID, {
     from_name: data.nom,
     from_email: data.email,

@@ -86,8 +86,10 @@ export default function Simulator() {
         prixMax: String(price.max),
       });
       setIsComplete(true);
-    } catch {
-      setSendError('Erreur lors de l\'envoi. Veuillez réessayer.');
+    } catch (err: any) {
+      console.error('Erreur EmailJS:', err);
+      const detail = err?.text || err?.message || 'Erreur inconnue';
+      setSendError(`Erreur lors de l\'envoi (${detail}). Veuillez réessayer.`);
     } finally {
       setIsSending(false);
     }
