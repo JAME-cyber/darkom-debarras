@@ -12,7 +12,7 @@ const services = [
     features: [
       "Gestion complète du tri",
       "Prise en charge des encombrants",
-      "Nettoyage final inclus",
+      "Nettoyage final (optionnel)",
       "Intervention dans tout le département"
     ]
   },
@@ -73,7 +73,7 @@ const services = [
       "Écoute et patience",
       "Tri des effets personnels",
       "Valorisation possible",
-      "Nettoyage final"
+      "Nettoyage final (optionnel)"
     ]
   },
   {

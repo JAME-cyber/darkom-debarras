@@ -22,7 +22,7 @@ const pricing = [
       "Volume jusqu'à 30m³",
       "Tri complet",
       "Valorisation des biens",
-      "Nettoyage final",
+      "Nettoyage final (optionnel)",
       "Intervention 48-72h"
     ],
     featured: true
@@ -67,7 +67,7 @@ const process = [
   {
     step: 5,
     title: "Finalisation",
-    description: "Nettoyage final et remise des clés. Vous êtes libéré !"
+    description: "Nettoyage final (optionnel) et remise des clés. Vous êtes libéré !"
   }
 ];
 

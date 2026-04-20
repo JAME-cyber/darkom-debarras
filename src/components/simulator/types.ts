@@ -107,7 +107,7 @@ export const SERVICE_TYPES: Record<string, { label: string; emoji: string; descr
   'debarras-nettoyage': { 
     label: 'Débarras + Nettoyage', 
     emoji: '✨',
-    description: 'Débarras complet avec nettoyage final du logement'
+    description: 'Débarras complet avec nettoyage final (optionnel) du logement'
   },
   'succession': { 
     label: 'Débarras succession', 
