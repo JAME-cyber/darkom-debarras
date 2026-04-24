@@ -38,7 +38,7 @@ export default function Hero() {
 
             <div className="flex items-center gap-4 sm:gap-8 mt-8 sm:mt-10 pt-6 sm:pt-10 border-t border-gray-200 flex-wrap">
               <div>
-                <p className="text-2xl sm:text-3xl font-bold text-[#143d24]">3</p>
+                <p className="text-2xl sm:text-3xl font-bold text-[#143d24]">Plusieurs</p>
                 <p className="text-xs sm:text-sm text-[#5a5a5a]">Professionnels</p>
               </div>
               <div>
