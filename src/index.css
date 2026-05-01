@@ -3,12 +3,13 @@
 @theme {
   --color-primary: #143d24;
   --color-primary-light: #1a6530;
-  --color-accent: #1a6530;
-  --color-accent-light: #1f7a3a;
+  --color-accent: #a0ab37;
+  --color-accent-light: #b4bd4a;
+  --color-error: #dc2626;
   --color-surface: #f8f8f5;
   --color-surface-dark: #f0f0ec;
-  --color-text: #1a1a1a;
-  --color-text-light: #5a5a5a;
+  --color-body: #1a1a1a;
+  --color-muted: #5a5a5a;
   --font-sans: system-ui, 'Segoe UI', Roboto, sans-serif;
 }
 
@@ -19,7 +20,7 @@ html {
 
 body {
   font-family: var(--font-sans);
-  color: var(--color-text);
+  color: var(--color-body);
   background: white;
   margin: 0;
   -webkit-tap-highlight-color: transparent;
@@ -27,7 +28,7 @@ body {
   padding-right: env(safe-area-inset-right);
 }
 
-* {
+button, a {
   -webkit-touch-callout: none;
 }
 

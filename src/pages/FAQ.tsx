@@ -28,7 +28,7 @@ const faqItems = [
   },
   {
     question: "Le nettoyage est-il inclus dans le débarras ?",
-    answer: "Un balayage ou une aspiration des sols est toujours inclus dans nos prestations. Pour un nettoyage complet (aspiration, lavage des sols, vitres, sanitaires) ou un nettoyage de logement insalubre avec désinfection, nous proposons des options adaptées."
+    answer: "Toutes nos options de nettoyage sont proposées sur demande et sur devis : du balayage simple au nettoyage complet (aspiration, lavage des sols, vitres, sanitaires) en passant par le nettoyage de logement insalubre avec désinfection. Nous établissons un devis adapté à votre situation."
   },
   {
     question: "Comment est calculé le prix d'un débarras ?",
@@ -44,27 +44,39 @@ const faqItems = [
   }
 ];
 
-function FAQItem({ item, isOpen, onToggle }: {
+function FAQItem({ item, index, isOpen, onToggle }: {
   item: typeof faqItems[number];
+  index: number;
   isOpen: boolean;
   onToggle: () => void;
 }) {
+  const panelId = `faq-panel-${index}`;
+  const buttonId = `faq-button-${index}`;
   return (
     <div className="border border-gray-200 rounded-xl overflow-hidden transition-all duration-300">
       <button
+        id={buttonId}
         onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={panelId}
         className="w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-gray-50 transition-colors"
       >
-        <span className="font-semibold text-[#143d24] pr-4 text-sm sm:text-base">{item.question}</span>
+        <span className="font-semibold text-primary pr-4 text-sm sm:text-base">{item.question}</span>
         <svg
-          className={`w-5 h-5 text-[#1a6530] flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+          aria-hidden="true"
+          className={`w-5 h-5 text-primary-light flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
           fill="none" stroke="currentColor" viewBox="0 0 24 24"
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
       </button>
-      <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-        <div className="px-5 sm:px-6 pb-5 sm:pb-6 text-[#5a5a5a] text-sm sm:text-base leading-relaxed">
+      <div
+        id={panelId}
+        role="region"
+        aria-labelledby={buttonId}
+        className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
+      >
+        <div className="px-5 sm:px-6 pb-5 sm:pb-6 text-muted text-sm sm:text-base leading-relaxed">
           {item.answer}
         </div>
       </div>
@@ -81,9 +93,10 @@ export default function FAQ() {
         <img
           src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=80"
           alt="Foire aux questions"
+          loading="lazy"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-[#143d24]/70 flex items-center justify-center px-4">
+        <div className="absolute inset-0 bg-primary/70 flex items-center justify-center px-4">
           <div className="text-center">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-4">
               Questions fréquentes
@@ -95,12 +108,13 @@ export default function FAQ() {
         </div>
       </div>
 
-      <section className="py-10 sm:py-16 md:py-20 bg-[#f8f8f5]">
+      <section className="py-10 sm:py-16 md:py-20 bg-surface">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-4">
             {faqItems.map((item, index) => (
               <FAQItem
                 key={index}
+                index={index}
                 item={item}
                 isOpen={openIndex === index}
                 onToggle={() => setOpenIndex(openIndex === index ? null : index)}
@@ -109,10 +123,10 @@ export default function FAQ() {
           </div>
 
           <div className="mt-12 bg-white rounded-2xl p-8 text-center shadow-lg">
-            <h2 className="text-xl sm:text-2xl font-bold text-[#143d24] mb-3">
+            <h2 className="text-xl sm:text-2xl font-bold text-primary mb-3">
               Vous avez d'autres questions ?
             </h2>
-            <p className="text-[#5a5a5a] mb-6">
+            <p className="text-muted mb-6">
               N'hésitez pas à nous contacter, nous répondons sous 24h.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -120,13 +134,13 @@ export default function FAQ() {
                 Nous contacter
               </Button>
               <a
-                href="tel:+33612345678"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold border-2 border-[#143d24] text-[#143d24] hover:bg-[#143d24] hover:text-white transition-all duration-300"
+                href="tel:+33679447111"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                06 XX XX XX XX
+                06 79 44 71 11
               </a>
             </div>
           </div>

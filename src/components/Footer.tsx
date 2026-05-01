@@ -20,7 +20,7 @@ const quickLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#143d24] text-white">
+    <footer className="bg-primary text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
@@ -29,9 +29,10 @@ export default function Footer() {
                 <img
                   src={logoFooter}
                   alt="Logo Darkom Debarras"
-                  style={{ height: '70px', width: 'auto', objectFit: 'contain' }}
+                  loading="lazy"
+                  className="h-[70px] w-auto object-contain"
                 />
-                <p className="font-bold text-[#143d24] text-center mt-1" style={{ fontSize: '8px', whiteSpace: 'normal' }}>
+                <p className="font-bold text-primary text-center mt-1 text-[8px] whitespace-normal">
                   SOLUTIONS DE DÉBARRAS ÉCO-RESPONSABLES
                 </p>
               </div>
@@ -46,7 +47,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {services.map((link) => (
                 <li key={link.label}>
-                  <Link to={link.to} className="text-white/60 hover:text-[#a0ab37] transition-colors text-sm">
+                  <Link to={link.to} className="text-white/60 hover:text-accent transition-colors text-sm">
                     {link.label}
                   </Link>
                 </li>
@@ -59,7 +60,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <Link to={link.to} className="text-white/60 hover:text-[#a0ab37] transition-colors text-sm">
+                  <Link to={link.to} className="text-white/60 hover:text-accent transition-colors text-sm">
                     {link.label}
                   </Link>
                 </li>
@@ -74,24 +75,24 @@ export default function Footer() {
               <li>Haute-Savoie</li>
               <li>Intervention 48-72h</li>
               <li className="pt-2">
-                <a href="tel:+33679447111" className="flex items-center gap-2 hover:text-[#a0ab37] transition-colors">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <a href="tel:+33679447111" className="flex items-center gap-2 hover:text-accent transition-colors">
+                  <svg aria-hidden="true" className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                   </svg>
                   06 79 44 71 11
                 </a>
               </li>
               <li>
-                <a href="tel:+33686958626" className="flex items-center gap-2 hover:text-[#a0ab37] transition-colors">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <a href="tel:+33686958626" className="flex items-center gap-2 hover:text-accent transition-colors">
+                  <svg aria-hidden="true" className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                   </svg>
                   06 86 95 86 26
                 </a>
               </li>
               <li>
-                <a href="mailto:darkom-debarras@hotmail.com" className="flex items-center gap-2 hover:text-[#a0ab37] transition-colors">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <a href="mailto:darkom-debarras@hotmail.com" className="flex items-center gap-2 hover:text-accent transition-colors">
+                  <svg aria-hidden="true" className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                   </svg>

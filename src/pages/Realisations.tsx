@@ -28,15 +28,15 @@ const realizations = [
   {
     title: "Nettoyage local commercial",
     category: "Local professionnel",
-    description: "Bureau de 200m² vidé et nettoyé pour renovation. Gestion du mobilier et équipements.",
-    before: "Bureau à désertir",
+    description: "Bureau de 200m² vidé et nettoyé pour rénovation. Gestion du mobilier et équipements.",
+    before: "Bureau à desservir",
     after: "Local prêt pour travaux",
     image: "https://images.unsplash.com/photo-1690541772642-29fefa1817c8?auto=format&fit=crop&w=600&q=80"
   },
   {
     title: "Vide cave complexe",
     category: "Vide cave",
-    description: "Cave avec nombreux objetsheteroclites. Tri minutieux et evacuation selective.",
+    description: "Cave avec de nombreux objets hétéroclites. Tri minutieux et évacuation sélective.",
     before: "Cave encombrée",
     after: "Cave récupérée",
     image: "https://images.unsplash.com/photo-1698226927995-a78c836cb42b?auto=format&fit=crop&w=600&q=80"
@@ -60,7 +60,7 @@ export default function Realisations() {
           alt="Réalisations de débarras professionnel"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-[#143d24]/70 flex items-center justify-center px-4">
+        <div className="absolute inset-0 bg-primary/70 flex items-center justify-center px-4">
           <div className="text-center">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-4">
               Nos réalisations
@@ -72,7 +72,7 @@ export default function Realisations() {
         </div>
       </div>
 
-      <section className="py-10 sm:py-16 md:py-20 bg-[#f8f8f5]">
+      <section className="py-10 sm:py-16 md:py-20 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -85,26 +85,27 @@ export default function Realisations() {
                   <img
                     src={item.image}
                     alt={item.title}
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                  <div className="absolute top-4 left-4 bg-white/90 text-[#143d24] px-3 py-1 rounded-full text-sm font-medium">
+                  <div className="absolute top-4 left-4 bg-white/90 text-primary px-3 py-1 rounded-full text-sm font-medium">
                     {item.category}
                   </div>
                 </div>
                 
                 <div className="p-6">
-                  <h3 className="text-lg font-bold text-[#143d24] mb-2">{item.title}</h3>
-                  <p className="text-[#5a5a5a] text-sm mb-4">{item.description}</p>
+                  <h3 className="text-lg font-bold text-primary mb-2">{item.title}</h3>
+                  <p className="text-muted text-sm mb-4">{item.description}</p>
                   
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                      <p className="text-[#5a5a5a] mb-1">Avant</p>
-                      <p className="font-medium text-[#1a1a1a]">{item.before}</p>
+                      <p className="text-muted mb-1">Avant</p>
+                      <p className="font-medium text-body">{item.before}</p>
                     </div>
                     <div>
-                      <p className="text-[#a0ab37] mb-1">Après</p>
-                      <p className="font-medium text-[#1a1a1a]">{item.after}</p>
+                      <p className="text-accent mb-1">Après</p>
+                      <p className="font-medium text-body">{item.after}</p>
                     </div>
                   </div>
                 </div>
@@ -112,7 +113,7 @@ export default function Realisations() {
             ))}
           </div>
 
-          <div className="mt-16 bg-[#143d24] rounded-2xl p-8 md:p-12 text-center">
+          <div className="mt-16 bg-primary rounded-2xl p-8 md:p-12 text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
               Vous avez un projet de débarras ?
             </h2>

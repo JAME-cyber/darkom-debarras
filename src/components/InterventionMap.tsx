@@ -26,22 +26,22 @@ export default function InterventionMap() {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-[#1a6530]/10 text-[#1a6530] px-4 py-2 rounded-full text-sm font-medium mb-4">
-            <span className="w-2 h-2 bg-[#1a6530] rounded-full"></span>
+          <div className="inline-flex items-center gap-2 bg-primary-light/10 text-primary-light px-4 py-2 rounded-full text-sm font-medium mb-4">
+            <span className="w-2 h-2 bg-primary-light rounded-full"></span>
             Zone d'intervention
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#143d24] mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
             Nous intervenons dans toute la Haute-Savoie
           </h2>
-          <p className="text-[#5a5a5a] max-w-2xl mx-auto">
+          <p className="text-muted max-w-2xl mx-auto">
             Basés à Fillinges, notre équipe se déplace dans tout le département 74 pour vos projets de débarras.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          <div className="relative bg-[#f8f8f5] rounded-2xl p-6 sm:p-8">
+          <div className="relative bg-surface rounded-2xl p-6 sm:p-8">
             <div className="relative aspect-[4/5] max-w-md mx-auto">
-              <svg viewBox="0 0 100 100" className="w-full h-full">
+              <svg aria-hidden="true" viewBox="0 0 100 100" className="w-full h-full">
                 <path
                   d="M30 15 L55 10 L70 18 L75 30 L72 45 L78 55 L70 65 L65 80 L55 90 L40 88 L30 78 L25 65 L20 50 L22 35 Z"
                   fill="#1a6530"
@@ -115,28 +115,28 @@ export default function InterventionMap() {
               </svg>
             </div>
 
-            <div className="flex items-center justify-center gap-6 mt-4 text-xs text-[#5a5a5a]">
+            <div className="flex items-center justify-center gap-6 mt-4 text-xs text-muted">
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 bg-[#a0ab37] rounded-full"></span>
+                <span className="w-3 h-3 bg-accent rounded-full"></span>
                 Notre base
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 bg-[#143d24] rounded-full"></span>
+                <span className="w-3 h-3 bg-primary rounded-full"></span>
                 Zones d'intervention
               </div>
             </div>
           </div>
 
           <div>
-            <h3 className="text-xl font-bold text-[#143d24] mb-4">Villes principales desservies</h3>
+            <h3 className="text-xl font-bold text-primary mb-4">Villes principales desservies</h3>
             <div className="flex flex-wrap gap-2 mb-6">
               {zones.map((zone) => (
                 <span
                   key={zone.name}
                   className={`px-3 py-1.5 rounded-full text-sm font-medium ${
                     zone.base
-                      ? 'bg-[#a0ab37]/15 text-[#7a8429] border border-[#a0ab37]/30'
-                      : 'bg-[#143d24]/10 text-[#143d24] border border-[#143d24]/20'
+                      ? 'bg-accent/15 text-accent/80 border border-accent/30'
+                      : 'bg-primary/10 text-primary border border-primary/20'
                   }`}
                 >
                   {zone.base && '📍 '}{zone.name}
@@ -144,21 +144,21 @@ export default function InterventionMap() {
               ))}
             </div>
 
-            <h3 className="text-lg font-bold text-[#143d24] mb-3">Et aussi...</h3>
-            <p className="text-[#5a5a5a] text-sm leading-relaxed mb-6">
+            <h3 className="text-lg font-bold text-primary mb-3">Et aussi...</h3>
+            <p className="text-muted text-sm leading-relaxed mb-6">
               {otherCities.join(', ')} et toutes les communes de Haute-Savoie.
             </p>
 
-            <div className="bg-[#f8f8f5] rounded-xl p-6 border border-gray-100">
+            <div className="bg-surface rounded-xl p-6 border border-gray-100">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-[#1a6530]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 h-5 text-[#1a6530]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-10 h-10 bg-primary-light/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg aria-hidden="true" className="w-5 h-5 text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="font-semibold text-[#143d24]">Intervention rapide</p>
-                  <p className="text-[#5a5a5a] text-sm">Déplacement et devis gratuits dans tout le département. Intervention sous 48-72h.</p>
+                  <p className="font-semibold text-primary">Intervention rapide</p>
+                  <p className="text-muted text-sm">Déplacement et devis gratuits dans tout le département. Intervention sous 48-72h.</p>
                 </div>
               </div>
             </div>

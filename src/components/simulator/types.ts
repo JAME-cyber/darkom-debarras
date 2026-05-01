@@ -36,20 +36,21 @@ export const CLEANING_OPTIONS = [
   { 
     id: 'balayage', 
     label: 'Balayage ou aspiration des sols', 
-    sublabel: '(gratuit, compris)',
-    price: 0
+    sublabel: '(optionnel, sur demande)',
+    price: 0,
+    onDemand: true
   },
   { 
     id: 'nettoyage', 
     label: 'Nettoyage complet', 
-    sublabel: '(aspiration, lessivage, vitres, sanitaires)',
+    sublabel: '(aspiration, lessivage, vitres, sanitaires, sur demande)',
     price: 0,
     onDemand: true
   },
   { 
     id: 'insalubre', 
     label: 'Nettoyage logement insalubre + désinfection', 
-    sublabel: '(traitement specialisé)',
+    sublabel: '(traitement spécialisé, sur demande)',
     price: 0,
     onDemand: true
   },

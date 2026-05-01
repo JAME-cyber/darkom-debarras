@@ -4,7 +4,7 @@ import logoAPropos from '../assets/a_propos.png';
 const values = [
   {
     icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg aria-hidden="true" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
       </svg>
     ),
@@ -13,7 +13,7 @@ const values = [
   },
   {
     icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg aria-hidden="true" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
@@ -22,7 +22,7 @@ const values = [
   },
   {
     icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg aria-hidden="true" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
@@ -31,7 +31,7 @@ const values = [
   },
   {
     icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg aria-hidden="true" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
       </svg>
     ),
@@ -43,20 +43,20 @@ const values = [
 export default function APropos() {
   return (
     <main className="pt-16 sm:pt-20 md:pt-32">
-      <section className="py-10 sm:py-16 md:py-20 bg-[#f8f8f5]">
+      <section className="py-10 sm:py-16 md:py-20 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-12 md:mb-20">
             <div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#143d24] mb-4 sm:mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 sm:mb-6">
                 À propos de Darkom-Debarras
               </h1>
-              <p className="text-[#5a5a5a] text-base sm:text-lg mb-4 sm:mb-6">
+              <p className="text-muted text-base sm:text-lg mb-4 sm:mb-6">
                 Fondé à Fillinges en Haute-Savoie, Darkom-Debarras est votre partenaire de confiance pour tous vos projets de débarras.
               </p>
-              <p className="text-[#5a5a5a] mb-6">
+              <p className="text-muted mb-6">
                 Avec des professionnels passionnés, nous nous engageons à vous offrir un service premium tout en restant accessibles. Notre philosophie : libérer votre espace tout en respectant l'environnement.
               </p>
-              <p className="text-[#5a5a5a] mb-8">
+              <p className="text-muted mb-8">
                 Chaque intervention est pour nous l'occasion de créer un espace de vie plus agréable pour nos clients, tout en contribuant à une économie circulaire locale par le tri, le recyclage et les dons aux associations.
               </p>
               <Button to="/contact" variant="primary">
@@ -65,14 +65,14 @@ export default function APropos() {
             </div>
             
             <div className="relative flex items-center justify-center">
-              <div className="w-full max-w-md bg-gradient-to-br from-[#143d24] to-[#1a6530] rounded-3xl shadow-2xl p-8 flex flex-col items-center gap-6">
+              <div className="w-full max-w-md bg-gradient-to-br from-primary to-primary-light rounded-3xl shadow-2xl p-8 flex flex-col items-center gap-6">
                 <div className="bg-white rounded-2xl px-6 py-4 w-full flex flex-col items-center justify-center shadow-lg overflow-hidden max-w-[300px]">
                   <img
                     src={logoAPropos}
                     alt="Logo Darkom Debarras – Solutions de débarras éco-responsables"
-                    style={{ height: '90px', width: 'auto', objectFit: 'contain' }}
+                    className="h-[90px] w-auto object-contain"
                   />
-                  <p className="font-bold text-[#143d24] text-center mt-2" style={{ fontSize: '10px', whiteSpace: 'normal', width: '100%' }}>
+                  <p className="font-bold text-primary text-center mt-2 text-[10px] whitespace-normal w-full">
                     SOLUTIONS DE DÉBARRAS ÉCO-RESPONSABLES
                   </p>
                 </div>
@@ -91,21 +91,21 @@ export default function APropos() {
           </div>
 
           <div className="mb-20">
-            <h2 className="text-3xl font-bold text-[#143d24] mb-12 text-center">
+            <h2 className="text-3xl font-bold text-primary mb-12 text-center">
               Notre équipe
             </h2>
             
             <div className="max-w-3xl mx-auto">
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 text-center">
-                <div className="w-20 h-20 bg-[#143d24] rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl font-bold text-white">LD</span>
                 </div>
-                <h3 className="text-xl font-bold text-[#143d24] mb-1">Laurie Decouvette</h3>
-                <p className="text-[#a0ab37] font-semibold mb-4">Fondatrice &amp; Gérante</p>
-                <p className="text-[#5a5a5a] text-lg mb-4">
+                <h3 className="text-xl font-bold text-primary mb-1">Laurie Decouvette</h3>
+                <p className="text-accent font-semibold mb-4">Fondatrice &amp; Gérante</p>
+                <p className="text-muted text-lg mb-4">
                   Passionnée par son métier, Laurie a fondé Darkom-Debarras avec la conviction qu'un service de débarras peut être à la fois professionnel, humain et écoresponsable.
                 </p>
-                <p className="text-[#5a5a5a]">
+                <p className="text-muted">
                   Entourée d'une équipe expérimentée et dévouée, elle veille personnellement à la satisfaction de chaque client. Du premier contact à la finalisation de l'intervention, Laurie et son équipe vous garantissent un accompagnement soigné, efficace et dans le respect total de votre espace et de vos biens.
                 </p>
               </div>
@@ -113,7 +113,7 @@ export default function APropos() {
           </div>
 
           <div>
-            <h2 className="text-3xl font-bold text-[#143d24] mb-12 text-center">
+            <h2 className="text-3xl font-bold text-primary mb-12 text-center">
               Nos valeurs
             </h2>
             
@@ -123,11 +123,11 @@ export default function APropos() {
                   key={index}
                   className="bg-white rounded-2xl p-8 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-shadow"
                 >
-                  <div className="w-16 h-16 bg-[#1a6530]/10 rounded-xl flex items-center justify-center text-[#1a6530] mx-auto mb-6">
+                  <div className="w-16 h-16 bg-primary-light/10 rounded-xl flex items-center justify-center text-primary-light mx-auto mb-6">
                     {value.icon}
                   </div>
-                  <h3 className="text-lg font-bold text-[#143d24] mb-3">{value.title}</h3>
-                  <p className="text-[#5a5a5a] text-sm">{value.description}</p>
+                  <h3 className="text-lg font-bold text-primary mb-3">{value.title}</h3>
+                  <p className="text-muted text-sm">{value.description}</p>
                 </div>
               ))}
             </div>
