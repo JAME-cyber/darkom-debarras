@@ -5,8 +5,8 @@ export default function StepNettoyage({ data, onNext }: StepProps) {
   return (
     <div className="simulator-step">
       <h2>Souhaitez-vous un nettoyage complémentaire ?</h2>
-      <p className="simulator-subtitle">Optionnel mais recommandé pour un resultat clés en main</p>
-      
+      <p className="simulator-subtitle">Optionnel mais recommandé pour un résultat clés en main</p>
+
       <div className="simulator-radio-list">
         {CLEANING_OPTIONS.map((option) => (
           <label

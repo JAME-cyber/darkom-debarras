@@ -52,13 +52,17 @@ export default function Contact() {
       [e.target.name]: e.target.value
     });
     if (fieldErrors[e.target.name]) {
-      setFieldErrors(prev => { const next = { ...prev }; delete next[e.target.name]; return next; });
+      setFieldErrors((prev) => {
+        const next = { ...prev };
+        delete next[e.target.name];
+        return next;
+      });
     }
   };
 
   if (submitted) {
     return (
-    <main className="pt-32">
+      <main className="pt-32">
         <section className="py-20 bg-surface min-h-[80vh] flex items-center">
           <div className="max-w-2xl mx-auto px-4 text-center">
             <div className="w-20 h-20 bg-primary-light/10 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -96,7 +100,7 @@ export default function Contact() {
               Parlons de votre projet
             </h1>
             <p className="text-white/80 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
-              {useSimulator 
+              {useSimulator
                 ? 'Répondez à quelques questions pour obtenir une estimation personnalisée'
                 : 'Décrivez votre besoin et nous vous recontacterons rapidement'}
             </p>
@@ -115,8 +119,8 @@ export default function Contact() {
               <button
                 onClick={() => setUseSimulator(true)}
                 className={`px-6 py-3 rounded-lg font-medium transition-all ${
-                  useSimulator 
-                    ? 'bg-primary text-white' 
+                  useSimulator
+                    ? 'bg-primary text-white'
                     : 'text-muted hover:bg-surface'
                 }`}
               >
@@ -130,8 +134,8 @@ export default function Contact() {
               <button
                 onClick={() => setUseSimulator(false)}
                 className={`px-6 py-3 rounded-lg font-medium transition-all ${
-                  !useSimulator 
-                    ? 'bg-primary text-white' 
+                  !useSimulator
+                    ? 'bg-primary text-white'
                     : 'text-muted hover:bg-surface'
                 }`}
               >
@@ -269,7 +273,7 @@ export default function Contact() {
                 <div>
                   <div className="bg-white rounded-2xl p-8 shadow-lg mb-6">
                     <h3 className="text-lg font-bold text-primary mb-6">Nos coordonnées</h3>
-                    
+
                     <div className="space-y-4">
                       <div className="flex items-start gap-4">
                         <div className="w-10 h-10 bg-primary-light/10 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -331,8 +335,8 @@ export default function Contact() {
                     <p className="text-white/70 text-sm mb-6">
                       Nous comprenons que certains débarras ne peuvent pas attendre. Appelez-nous directement pour une intervention rapide.
                     </p>
-                    <a 
-                      href="tel:+33679447111" 
+                    <a
+                      href="tel:+33679447111"
                       className="inline-flex items-center justify-center w-full px-6 py-3 bg-accent hover:bg-accent-light rounded-lg font-semibold transition-colors"
                     >
                       <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -1,12 +1,19 @@
 import { useState } from 'react';
 import type { StepProps } from './types';
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_REGEX = /^(?:\+33|0)[1-9]\d{8}$/;
+
 export default function StepContact({ data, onNext }: StepProps) {
   const [nom, setNom] = useState(data.nom || '');
   const [email, setEmail] = useState(data.email || '');
   const [telephone, setTelephone] = useState(data.telephone || '');
 
-  const isValid = nom.trim().length >= 2 && email.includes('@') && telephone.length >= 8;
+  const normalizedPhone = telephone.replace(/\s/g, '');
+  const isValid =
+    nom.trim().length >= 2 &&
+    EMAIL_REGEX.test(email.trim()) &&
+    PHONE_REGEX.test(normalizedPhone);
 
   const handleSubmit = () => {
     if (isValid) {

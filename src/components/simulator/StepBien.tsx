@@ -12,15 +12,15 @@ const BIEN_TYPES = [
 export default function StepBien({ data, onNext }: StepProps) {
   return (
     <div className="simulator-step">
-      <h2>Quel type de bien à débarasser ?</h2>
+      <h2>Quel type de bien à débarrasser ?</h2>
       <p className="simulator-subtitle">Sélectionnez le type de bien</p>
-      
+
       <div className="simulator-options-grid">
         {BIEN_TYPES.map((bien) => (
           <button
             key={bien.id}
-            className={`simulator-option-card ${data.surface === bien.id ? 'selected' : ''}`}
-            onClick={() => onNext({ surface: bien.id })}
+            className={`simulator-option-card ${data.bientype === bien.id ? 'selected' : ''}`}
+            onClick={() => onNext({ bientype: bien.id })}
           >
             <span className="simulator-option-emoji">{bien.emoji}</span>
             <span className="simulator-option-label">{bien.label}</span>

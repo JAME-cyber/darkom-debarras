@@ -19,7 +19,7 @@ export interface SimulatorFormData {
   telephone: string;
   service: string;
   typeBien: string;
-  surface: string;
+  bientype: string;
   etage: string;
   ascenseur: string;
   volume: string;
@@ -48,8 +48,8 @@ export async function sendSimulatorEmail(data: SimulatorFormData): Promise<void>
     from_email: data.email,
     phone: data.telephone,
     service: data.service,
-    type_bien: data.typeBien,
-    surface: data.surface,
+    type_bien: data.bientype,
+    surface: data.bientype,
     etage: data.etage,
     ascenseur: data.ascenseur,
     volume: data.volume,

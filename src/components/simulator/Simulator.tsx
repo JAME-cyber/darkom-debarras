@@ -16,7 +16,7 @@ import './Simulator.css';
 
 const initialData: SimulatorData = {
   typeBien: '',
-  surface: '',
+  bientype: '',
   etage: '',
   ascenseur: '',
   volume: '',
@@ -73,7 +73,7 @@ export default function Simulator() {
         telephone: finalData.telephone,
         service: serviceName,
         typeBien: finalData.typeBien,
-        surface: finalData.surface,
+        bientype: finalData.bientype,
         etage: finalData.etage,
         ascenseur: finalData.ascenseur,
         volume: finalData.volume,
@@ -126,7 +126,7 @@ export default function Simulator() {
 
           <div className="simulator-price-estimate">
             <span className="simulator-price-label">Estimation indicative</span>
-            <span className="simulator-price-value">{price.min}€ – {price.max}€</span>
+            <span className="simulator-price-value">{price.min}€ - {price.max}€</span>
             <span className="simulator-price-info">Prix final confirmé par téléphone</span>
           </div>
 

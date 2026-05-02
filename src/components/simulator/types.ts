@@ -1,6 +1,6 @@
 export interface SimulatorData {
   typeBien: string;
-  surface: string;
+  bientype: string;
   etage: string;
   ascenseur: string;
   volume: string;
@@ -28,28 +28,28 @@ export const OBJECT_OPTIONS = [
   { id: 'livres', label: 'Livres', emoji: '📚' },
   { id: 'outillage', label: 'Outillage', emoji: '🔧' },
   { id: 'bricolage', label: 'Matériaux/Bricolage', emoji: '🪵' },
-  { id: 'déchets', label: 'Déchets verts/encombrants', emoji: '🗑️' },
+  { id: 'dechets', label: 'Déchets verts/encombrants', emoji: '🗑️' },
   { id: 'autres', label: 'Autres', emoji: '📦' },
 ];
 
 export const CLEANING_OPTIONS = [
-  { 
-    id: 'balayage', 
-    label: 'Balayage ou aspiration des sols', 
+  {
+    id: 'balayage',
+    label: 'Balayage ou aspiration des sols',
     sublabel: '(optionnel, sur demande)',
     price: 0,
     onDemand: true
   },
-  { 
-    id: 'nettoyage', 
-    label: 'Nettoyage complet', 
+  {
+    id: 'nettoyage',
+    label: 'Nettoyage complet',
     sublabel: '(aspiration, lessivage, vitres, sanitaires, sur demande)',
     price: 0,
     onDemand: true
   },
-  { 
-    id: 'insalubre', 
-    label: 'Nettoyage logement insalubre + désinfection', 
+  {
+    id: 'insalubre',
+    label: 'Nettoyage logement insalubre + désinfection',
     sublabel: '(traitement spécialisé, sur demande)',
     price: 0,
     onDemand: true
@@ -95,33 +95,33 @@ export function estimatePrice(data: SimulatorData): { min: number; max: number }
   const [baseMin, baseMax] = VOLUME_PRICES[data.volume] || [300, 800];
   const etageSupp = data.ascenseur === 'non' ? ETAGE_SUPPLEMENT[data.etage] || 0 : 0;
   const accessSupp = ACCESSIBLE_SUPPLEMENT[data.accessible] || 0;
-  const cleaning = CLEANING_OPTIONS.find(o => o.id === data.optionNettoyage)?.price || 0;
+  const cleaning = CLEANING_OPTIONS.find((o) => o.id === data.optionNettoyage)?.price || 0;
   return { min: baseMin + etageSupp + accessSupp + cleaning, max: baseMax + etageSupp + accessSupp + cleaning };
 }
 
 export const SERVICE_TYPES: Record<string, { label: string; emoji: string; description: string }> = {
-  'debarras': { 
-    label: 'Débarras simple', 
+  'debarras': {
+    label: 'Débarras simple',
     emoji: '🚛',
     description: 'Vous souhaitez vider un logement, cave, garage ou grenier'
   },
-  'debarras-nettoyage': { 
-    label: 'Débarras + Nettoyage', 
+  'debarras-nettoyage': {
+    label: 'Débarras + Nettoyage',
     emoji: '✨',
     description: 'Débarras complet avec nettoyage final (optionnel) du logement'
   },
-  'succession': { 
-    label: 'Débarras succession', 
+  'succession': {
+    label: 'Débarras succession',
     emoji: '🏠',
     description: 'Intervention suite à un décès ou héritage'
   },
-  'demenagement': { 
-    label: 'Départ maison de retraite', 
+  'demenagement': {
+    label: 'Départ maison de retraite',
     emoji: '👴',
     description: 'Vidage logement lors d\'un départ en maison de retraite'
   },
-  'sinistre': { 
-    label: 'Nettoyage après sinistre', 
+  'sinistre': {
+    label: 'Nettoyage après sinistre',
     emoji: '🔥',
     description: 'Remise en état après dégât des eaux, incendie...'
   },

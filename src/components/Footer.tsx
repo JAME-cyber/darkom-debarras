@@ -14,7 +14,7 @@ const quickLinks = [
   { to: '/realisations', label: 'Réalisations' },
   { to: '/tarifs', label: 'Tarifs' },
   { to: '/faq', label: 'FAQ' },
-  { to: '/a-propos', label: 'À Propos' },
+  { to: '/a-propos', label: 'À propos' },
   { to: '/contact', label: 'Contact' },
 ];
 
@@ -24,8 +24,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <Link to="/" className="inline-block mb-4" aria-label="Darkom Debarras – Accueil">
-                <div className="bg-white rounded-xl px-4 py-2 inline-flex flex-col items-center shadow-md overflow-hidden max-w-[200px]">
+            <Link to="/" className="inline-block mb-4" aria-label="Darkom Debarras - Accueil">
+              <div className="bg-white rounded-xl px-4 py-2 inline-flex flex-col items-center shadow-md overflow-hidden max-w-[200px]">
                 <img
                   src={logoFooter}
                   alt="Logo Darkom Debarras"

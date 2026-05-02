@@ -6,9 +6,9 @@ export default function StepObjets({ data, onNext }: StepProps) {
   const [selected, setSelected] = useState<string[]>(data.objetsSpeciaux || []);
 
   const toggleObjet = (objetId: string) => {
-    setSelected(prev =>
+    setSelected((prev) =>
       prev.includes(objetId)
-        ? prev.filter(id => id !== objetId)
+        ? prev.filter((id) => id !== objetId)
         : [...prev, objetId]
     );
   };

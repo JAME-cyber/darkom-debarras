@@ -31,18 +31,18 @@ const ACCESSIBLE_LABELS: Record<string, string> = {
 export default function StepRecapitulatif({ data, onNext }: StepProps) {
   const selectedService = SERVICE_TYPES[data.typeBien || ''];
   const selectedVolume = VOLUME_ESTIMATES[data.volume || ''];
-  const selectedCleaning = CLEANING_OPTIONS.find(o => o.id === data.optionNettoyage);
-  const selectedObjects = OBJECT_OPTIONS.filter(o => (data.objetsSpeciaux || []).includes(o.id));
+  const selectedCleaning = CLEANING_OPTIONS.find((o) => o.id === data.optionNettoyage);
+  const selectedObjects = OBJECT_OPTIONS.filter((o) => (data.objetsSpeciaux || []).includes(o.id));
   const price = estimatePrice(data);
 
   const recapItems = [
     { label: 'Service', value: selectedService?.label || '-' },
-    { label: 'Type de bien', value: BIEN_LABELS[data.surface || ''] || '-' },
+    { label: 'Type de bien', value: BIEN_LABELS[data.bientype || ''] || '-' },
     { label: 'Volume estimé', value: selectedVolume || '-' },
     { label: 'Étage', value: ETAGE_LABELS[data.etage || ''] || '-' },
     { label: 'Ascenseur', value: ASCENSEUR_LABELS[data.ascenseur || ''] || '-' },
     { label: 'Accès', value: ACCESSIBLE_LABELS[data.accessible || ''] || '-' },
-    { label: 'Objets', value: selectedObjects.map(o => o.label).join(', ') || '-' },
+    { label: 'Objets', value: selectedObjects.map((o) => o.label).join(', ') || '-' },
     { label: 'Nettoyage', value: selectedCleaning?.label || 'Non' },
     { label: 'Localisation', value: data.lieu ? `${data.lieu} (${data.codePostal})` : '-' },
     { label: 'Nom', value: data.nom || '-' },
@@ -66,7 +66,7 @@ export default function StepRecapitulatif({ data, onNext }: StepProps) {
 
       <div className="simulator-price-estimate">
         <span className="simulator-price-label">Devis estimatif</span>
-        <span className="simulator-price-value">{price.min}€ – {price.max}€</span>
+        <span className="simulator-price-value">{price.min}€ - {price.max}€</span>
         <span className="simulator-price-info">Estimation indicative, prix final confirmé par téléphone</span>
       </div>
 

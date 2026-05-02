@@ -6,7 +6,7 @@ export default function StepServiceType({ data, onNext }: StepProps) {
     <div className="simulator-step">
       <h2>Quel type de service recherchez-vous ?</h2>
       <p className="simulator-subtitle">Sélectionnez la prestation qui correspond à votre besoin</p>
-      
+
       <div className="simulator-options-grid">
         {Object.entries(SERVICE_TYPES).map(([key, service]) => (
           <button

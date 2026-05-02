@@ -15,8 +15,8 @@ export default function StepVolume({ data, onNext }: StepProps) {
   return (
     <div className="simulator-step">
       <h2>Quelle est la surface ou le volume ?</h2>
-      <p className="simulator-subtitle">Estimez la taille du bien à débarasser</p>
-      
+      <p className="simulator-subtitle">Estimez la taille du bien à débarrasser</p>
+
       <div className="simulator-options-grid">
         {VOLUME_OPTIONS.map((option) => (
           <button
@@ -29,12 +29,12 @@ export default function StepVolume({ data, onNext }: StepProps) {
           </button>
         ))}
       </div>
-      
+
       <div className="simulator-help">
         <svg aria-hidden="true" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <span>1 m³ ≈ 5 cartons standards ou 1 electromenager volumineux</span>
+        <span>1 m³ ≈ 5 cartons standards ou 1 électroménager volumineux</span>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ const navLinks = [
   { to: '/realisations', label: 'Réalisations' },
   { to: '/tarifs', label: 'Tarifs' },
   { to: '/faq', label: 'FAQ' },
-  { to: '/a-propos', label: 'À Propos' },
+  { to: '/a-propos', label: 'À propos' },
   { to: '/contact', label: 'Contact' },
 ];
 
@@ -21,7 +21,7 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 bg-primary text-white z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14 sm:h-16 md:h-20">
-          <Link to="/" className="flex items-center" aria-label="Darkom Debarras – Accueil">
+          <Link to="/" className="flex items-center" aria-label="Darkom Debarras - Accueil">
             <div className="bg-white rounded-md px-2 py-1 shadow-sm flex flex-col items-center justify-center max-w-[150px] overflow-hidden">
               <img
                 src={logoHeader}
@@ -41,9 +41,7 @@ export default function Header() {
                   key={link.to}
                   to={link.to}
                   className={`text-sm font-medium transition-colors hover:text-white/80 ${
-                    location.pathname === link.to 
-                      ? 'text-white' 
-                      : 'text-white/70'
+                    location.pathname === link.to ? 'text-white' : 'text-white/70'
                   }`}
                 >
                   {link.label}
@@ -89,9 +87,7 @@ export default function Header() {
                 to={link.to}
                 onClick={() => setIsOpen(false)}
                 className={`block py-2 text-base font-medium ${
-                  location.pathname === link.to 
-                    ? 'text-white' 
-                    : 'text-white/70'
+                  location.pathname === link.to ? 'text-white' : 'text-white/70'
                 }`}
               >
                 {link.label}
