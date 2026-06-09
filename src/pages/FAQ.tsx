@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Button from '../components/Button';
+import useSEO from '../hooks/useSEO';
 
 const faqItems = [
   {
@@ -85,6 +86,12 @@ function FAQItem({ item, index, isOpen, onToggle }: {
 }
 
 export default function FAQ() {
+  useSEO({
+    title: 'FAQ — Questions fréquentes | Darkom-Debarras',
+    description: 'Toutes les réponses à vos questions sur le débarras : tarifs, délais, zone d\'intervention, nettoyage, successions. Darkom-Debarras, Haute-Savoie.',
+    canonical: '/faq',
+  });
+
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (

@@ -104,6 +104,10 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 mt-10 pt-8 text-center text-sm text-white/40">
+          <div className="flex flex-wrap justify-center gap-4 mb-4">
+            <Link to="/mentions-legales" className="text-white/40 hover:text-accent transition-colors">Mentions légales</Link>
+            <Link to="/politique-de-confidentialite" className="text-white/40 hover:text-accent transition-colors">Politique de confidentialité</Link>
+          </div>
           <p>&copy; {new Date().getFullYear()} Darkom-Debarras. Tous droits réservés.</p>
         </div>
       </div>

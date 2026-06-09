@@ -1,4 +1,5 @@
 import Button from '../components/Button';
+import useSEO from '../hooks/useSEO';
 
 const realizations = [
   {
@@ -52,6 +53,12 @@ const realizations = [
 ];
 
 export default function Realisations() {
+  useSEO({
+    title: 'Nos réalisations | Darkom-Debarras Haute-Savoie',
+    description: 'Découvrez nos projets de débarras réalisés en Haute-Savoie : maisons, appartements, caves, successions. Photos avant/après.',
+    canonical: '/realisations',
+  });
+
   return (
     <main className="pt-16 sm:pt-20 md:pt-28">
       <div className="relative h-48 sm:h-64 md:h-80 overflow-hidden">

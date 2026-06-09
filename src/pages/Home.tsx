@@ -1,3 +1,4 @@
+import useSEO from '../hooks/useSEO';
 import Hero from '../components/Hero';
 import ServiceCard from '../components/ServiceCard';
 import Testimonials from '../components/Testimonial';
@@ -38,6 +39,12 @@ const services = [
 ];
 
 export default function Home() {
+  useSEO({
+    title: 'Darkom-Debarras | Débarras professionnel en Haute-Savoie 74',
+    description: 'Service de débarras professionnel en Haute-Savoie. Maison, appartement, cave, grenier, successions. Intervention rapide 48-72h. Devis gratuit et sans engagement.',
+    canonical: '/',
+  });
+
   return (
     <main>
       <Hero />

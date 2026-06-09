@@ -1,5 +1,6 @@
 import Button from '../components/Button';
 import logoAPropos from '../assets/a_propos.png';
+import useSEO from '../hooks/useSEO';
 
 const values = [
   {
@@ -41,6 +42,12 @@ const values = [
 ];
 
 export default function APropos() {
+  useSEO({
+    title: 'À propos | Darkom-Debarras — Débarras écoresponsable en Haute-Savoie',
+    description: 'Darkom-Debarras, fondé par Laurie Decouvette à Fillinges. Service de débarras professionnel, écoresponsable et rapide en Haute-Savoie.',
+    canonical: '/a-propos',
+  });
+
   return (
     <main className="pt-16 sm:pt-20 md:pt-32">
       <section className="py-10 sm:py-16 md:py-20 bg-surface">

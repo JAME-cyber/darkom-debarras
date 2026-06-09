@@ -1,4 +1,5 @@
 import Button from '../components/Button';
+import useSEO from '../hooks/useSEO';
 
 const pricing = [
   {
@@ -72,6 +73,12 @@ const process = [
 ];
 
 export default function Tarifs() {
+  useSEO({
+    title: 'Tarifs débarras | Darkom-Debarras Haute-Savoie',
+    description: 'Tarifs transparents pour le débarras en Haute-Savoie : à partir de 250€. Débarras simple, standard ou complet. Devis gratuit et personnalisé sous 24h.',
+    canonical: '/tarifs',
+  });
+
   return (
     <main className="pt-16 sm:pt-20 md:pt-28">
       <div className="relative h-48 sm:h-64 md:h-80 overflow-hidden">

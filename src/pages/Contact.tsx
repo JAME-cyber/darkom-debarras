@@ -2,11 +2,18 @@ import { useState } from 'react';
 import Button from '../components/Button';
 import Simulator from '../components/simulator/Simulator';
 import { sendContactEmail } from '../services/emailService';
+import useSEO from '../hooks/useSEO';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_REGEX = /^(?:\+33|0)[1-9]\d{8}$/;
 
 export default function Contact() {
+  useSEO({
+    title: 'Contact & devis gratuit | Darkom-Debarras Haute-Savoie',
+    description: 'Demandez votre devis gratuit de débarras en Haute-Savoie. Simulateur en ligne, formulaire ou téléphone. Réponse sous 24h, intervention 48-72h.',
+    canonical: '/contact',
+  });
+
   const [formData, setFormData] = useState({
     nom: '',
     email: '',

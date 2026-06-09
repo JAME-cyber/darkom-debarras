@@ -1,4 +1,5 @@
 import Button from '../components/Button';
+import useSEO from '../hooks/useSEO';
 
 const services = [
   {
@@ -94,6 +95,12 @@ const services = [
 ];
 
 export default function Services() {
+  useSEO({
+    title: 'Nos services de débarras | Darkom-Debarras Haute-Savoie',
+    description: 'Débarras maison, appartement, cave, grenier, garage, successions, nettoyage après sinistre. Services complets en Haute-Savoie. Devis gratuit.',
+    canonical: '/services',
+  });
+
   return (
     <main className="pt-16 sm:pt-20 md:pt-28">
       <div className="relative h-48 sm:h-64 md:h-80 overflow-hidden">
