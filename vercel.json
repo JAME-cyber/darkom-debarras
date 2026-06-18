@@ -1,0 +1,23 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/services", "destination": "/services/index.html" },
+    { "source": "/realisations", "destination": "/realisations/index.html" },
+    { "source": "/tarifs", "destination": "/tarifs/index.html" },
+    { "source": "/a-propos", "destination": "/a-propos/index.html" },
+    { "source": "/contact", "destination": "/contact/index.html" },
+    { "source": "/faq", "destination": "/faq/index.html" },
+    { "source": "/mentions-legales", "destination": "/mentions-legales/index.html" },
+    { "source": "/politique-de-confidentialite", "destination": "/politique-de-confidentialite/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" }
+      ]
+    }
+  ]
+}
