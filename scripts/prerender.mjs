@@ -21,6 +21,7 @@ const routes = [
   '/a-propos',
   '/contact',
   '/faq',
+  '/guide-succession',
   '/mentions-legales',
   '/politique-de-confidentialite',
   '/404',

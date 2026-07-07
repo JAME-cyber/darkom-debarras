@@ -9,6 +9,7 @@ import Tarifs from './pages/Tarifs';
 import APropos from './pages/APropos';
 import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
+import GuideSuccession from './pages/GuideSuccession';
 import MentionsLegales from './pages/MentionsLegales';
 import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite';
 import Button from './components/Button';
@@ -39,6 +40,7 @@ function App() {
           <Route path="/a-propos" element={<APropos />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/guide-succession" element={<GuideSuccession />} />
           <Route path="/mentions-legales" element={<MentionsLegales />} />
           <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
           <Route path="/404" element={<NotFound />} />

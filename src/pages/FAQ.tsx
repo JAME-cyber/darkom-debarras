@@ -42,6 +42,10 @@ const faqItems = [
   {
     question: 'Le devis est-il vraiment gratuit et sans engagement ?',
     answer: 'Oui, absolument. La visite technique et le devis sont entièrement gratuits et ne vous engagent à rien. Nous évaluons le volume et la complexité sur place, puis nous vous envoyons un devis détaillé sous 24h. Vous êtes libre d\'accepter ou de refuser.'
+  },
+  {
+    question: 'Êtes-vous assuré et garanti ?',
+    answer: 'Oui. Darkom-Debarras dispose d\'une assurance Responsabilité Civile Professionnelle (RC Pro) qui couvre les dommages éventuels lors de l\'intervention. Notre équipe est expérimentée, encadrée et nous travaillons avec un tri responsable et une traçabilité des objets évacués. Vous êtes protégé du premier contact à la remise des clés.'
   }
 ];
 

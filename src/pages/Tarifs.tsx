@@ -44,6 +44,12 @@ const pricing = [
   }
 ];
 
+const trustBadges = [
+  { icon: '🛡️', label: 'Assuré RC Pro' },
+  { icon: '📋', label: 'Devis transparent' },
+  { icon: '⏱️', label: 'Intervention 48-72h' }
+];
+
 const process = [
   {
     step: 1,
@@ -163,6 +169,16 @@ export default function Tarifs() {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Bandeau réassurance */}
+          <div className="mt-16 flex flex-wrap items-center justify-center gap-6 sm:gap-10">
+            {trustBadges.map((badge, i) => (
+              <div key={i} className="flex items-center gap-2 text-body">
+                <span className="text-2xl" aria-hidden="true">{badge.icon}</span>
+                <span className="font-semibold text-primary">{badge.label}</span>
+              </div>
+            ))}
           </div>
 
           <div className="mt-12 text-center">
