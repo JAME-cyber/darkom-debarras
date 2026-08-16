@@ -1,14 +1,14 @@
 import Button from './Button';
 
 const zones = [
-  { name: 'Fillinges', x: 58, y: 55, base: true },
-  { name: 'Annemasse', x: 52, y: 62, base: false },
-  { name: 'Annecy', x: 42, y: 55, base: false },
-  { name: 'Thonon-les-Bains', x: 50, y: 78, base: false },
-  { name: 'Évian', x: 62, y: 82, base: false },
-  { name: 'Sallanches', x: 35, y: 35, base: false },
-  { name: 'Cluses', x: 42, y: 22, base: false },
-  { name: 'Bonneville', x: 48, y: 38, base: false },
+  { name: 'Fillinges', x: 58, y: 55, base: true, labelDx: 0, labelDy: -3 },
+  { name: 'Annemasse', x: 52, y: 62, base: false, labelDx: -2, labelDy: 4 },
+  { name: 'Annecy', x: 42, y: 55, base: false, labelDx: 0, labelDy: -3 },
+  { name: 'Thonon-les-Bains', x: 50, y: 78, base: false, labelDx: 0, labelDy: 5 },
+  { name: 'Évian', x: 62, y: 82, base: false, labelDx: 2, labelDy: -3 },
+  { name: 'Sallanches', x: 35, y: 35, base: false, labelDx: 0, labelDy: -3 },
+  { name: 'Cluses', x: 42, y: 22, base: false, labelDx: 0, labelDy: -3 },
+  { name: 'Bonneville', x: 48, y: 38, base: false, labelDx: 0, labelDy: -3 },
 ];
 
 const otherCities = [
@@ -80,8 +80,8 @@ export default function InterventionMap() {
                       />
                     )}
                     <text
-                      x={zone.x}
-                      y={zone.y - 3}
+                      x={zone.x + zone.labelDx}
+                      y={zone.y + zone.labelDy}
                       textAnchor="middle"
                       fill={zone.base ? "#a0ab37" : "#143d24"}
                       fontSize={zone.base ? "2.5" : "2.2"}
