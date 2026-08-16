@@ -36,16 +36,16 @@ export default function Hero() {
               </Button>
             </div>
 
-            <div className="flex items-center gap-4 sm:gap-8 mt-8 sm:mt-10 pt-6 sm:pt-10 border-t border-gray-200 flex-wrap">
-              <div>
+            <div className="flex items-center gap-4 sm:gap-8 mt-8 sm:mt-10 pt-6 sm:pt-10 border-t border-gray-200">
+              <div className="flex-1 min-w-0">
                 <p className="text-2xl sm:text-3xl font-bold text-primary">RC Pro</p>
                 <p className="text-xs sm:text-sm text-muted">Assurée & garantit</p>
               </div>
-              <div>
+              <div className="flex-1 min-w-0">
                 <p className="text-2xl sm:text-3xl font-bold text-primary">100+</p>
                 <p className="text-xs sm:text-sm text-muted">Clients satisfaits</p>
               </div>
-              <div>
+              <div className="flex-1 min-w-0">
                 <p className="text-2xl sm:text-3xl font-bold text-accent">100%</p>
                 <p className="text-xs sm:text-sm text-muted">Écoresponsable</p>
               </div>
@@ -79,7 +79,7 @@ export default function Hero() {
               className="aspect-square object-cover rounded-3xl shadow-2xl"
             />
             
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-xl p-3 sm:p-4 flex items-center gap-3 max-w-[200px]">
+            <div className="absolute -bottom-6 -left-4 bg-white rounded-xl shadow-xl p-3 sm:p-4 flex items-center gap-3 max-w-[200px]">
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary-light/10 rounded-lg flex items-center justify-center flex-shrink-0">
                 <svg aria-hidden="true" className="w-5 h-5 sm:w-6 sm:h-6 text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />

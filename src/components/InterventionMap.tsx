@@ -129,17 +129,22 @@ export default function InterventionMap() {
 
           <div>
             <h3 className="text-xl font-bold text-primary mb-4">Villes principales desservies</h3>
-            <div className="flex flex-wrap gap-2 mb-6">
+            <div className="flex flex-wrap items-center gap-2 mb-6">
               {zones.map((zone) => (
                 <span
                   key={zone.name}
-                  className={`px-3 py-1.5 rounded-full text-sm font-medium ${
+                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium ${
                     zone.base
                       ? 'bg-accent/15 text-accent/80 border border-accent/30'
                       : 'bg-primary/10 text-primary border border-primary/20'
                   }`}
                 >
-                  {zone.base && '📍 '}{zone.name}
+                  {zone.base && (
+                    <svg aria-hidden="true" className="w-3.5 h-3.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                    </svg>
+                  )}
+                  {zone.name}
                 </span>
               ))}
             </div>

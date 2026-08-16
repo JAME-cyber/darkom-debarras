@@ -479,8 +479,8 @@
 .simulator-nav {
   display: flex;
   align-items: center;
-  margin-top: 2rem;
-  padding-top: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
   border-top: 1px solid #e5e7eb;
 }
 
@@ -488,7 +488,10 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  width: 80px;
+  flex-shrink: 0;
+  justify-content: flex-start;
+  padding: 0.5rem 0;
   background: none;
   border: none;
   color: #5a5a5a;
@@ -505,21 +508,21 @@
   display: flex;
   gap: 0.5rem;
   justify-content: center;
+  align-items: center;
   flex: 1;
 }
 
 .simulator-nav-dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: #e5e7eb;
-  transition: all 0.2s ease;
+  background: #cbd5e1;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .simulator-nav-dot.active {
   background: #143d24;
-  width: 24px;
-  border-radius: 4px;
+  box-shadow: 0 0 0 3px rgba(20, 61, 36, 0.15);
 }
 
 .simulator-nav-dot.completed {
@@ -528,9 +531,14 @@
 
 .simulator-nav-spacer {
   width: 80px;
+  flex-shrink: 0;
 }
 
 @media (min-width: 640px) {
+  .simulator-nav-back {
+    width: 100px;
+  }
+
   .simulator-nav-spacer {
     width: 100px;
   }

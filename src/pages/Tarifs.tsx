@@ -94,9 +94,9 @@ export default function Tarifs() {
           loading="lazy"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-primary/70 flex items-center justify-center px-4">
+        <div className="absolute inset-0 bg-primary/85 flex items-center justify-center px-4">
           <div className="text-center">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-4 [text-shadow:0_2px_8px_rgba(0,0,0,0.45)]">
               Nos tarifs
             </h1>
             <p className="text-white/80 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">

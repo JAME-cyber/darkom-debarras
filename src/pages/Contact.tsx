@@ -101,9 +101,9 @@ export default function Contact() {
           loading="lazy"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-primary/70 flex items-center justify-center px-4">
+        <div className="absolute inset-0 bg-primary/85 flex items-center justify-center px-4">
           <div className="text-center">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-4 [text-shadow:0_2px_8px_rgba(0,0,0,0.45)]">
               Parlons de votre projet
             </h1>
             <p className="text-white/80 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
@@ -338,7 +338,7 @@ export default function Contact() {
                   </div>
 
                   <div className="bg-primary rounded-2xl p-8 text-white">
-                    <h3 className="text-lg font-bold mb-4">Besoin urgent ?</h3>
+                    <h3 className="text-lg font-bold mb-4 text-white">Besoin urgent ?</h3>
                     <p className="text-white/70 text-sm mb-6">
                       Nous comprenons que certains débarras ne peuvent pas attendre. Appelez-nous directement pour une intervention rapide.
                     </p>
