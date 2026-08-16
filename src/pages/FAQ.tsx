@@ -102,7 +102,7 @@ export default function FAQ() {
     <main className="pt-16 sm:pt-20 md:pt-28">
       <div className="relative h-48 sm:h-64 md:h-80 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=80"
+          src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=fit&crop=w=1600&q=80"
           alt="Foire aux questions"
           loading="lazy"
           className="w-full h-full object-cover"

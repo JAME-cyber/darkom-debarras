@@ -119,7 +119,7 @@ export default function Home() {
               </div>
               <div className="hidden lg:block">
                 <img
-                  src="https://images.unsplash.com/photo-1700165644892-3dd6b67b25bc?auto=format&fit=crop&w=800&q=80"
+                  src="https://images.pexels.com/photos/3760514/pexels-photo-3760514.jpeg?auto=fit&crop=w=800&q=80"
                   alt="Cartons de déménagement pour estimation en ligne"
                   loading="lazy"
                   className="rounded-2xl shadow-xl object-cover w-full h-80"

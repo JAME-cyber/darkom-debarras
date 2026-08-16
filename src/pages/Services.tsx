@@ -105,7 +105,7 @@ export default function Services() {
     <main className="pt-16 sm:pt-20 md:pt-28">
       <div className="relative h-48 sm:h-64 md:h-80 overflow-hidden">
         <img
-          src="https://plus.unsplash.com/premium_photo-1769792494332-b835b6df932c?auto=format&fit=crop&w=1600&q=80"
+          src="https://images.pexels.com/photos/6195949/pexels-photo-6195949.jpeg?auto=fit&crop=w=1600&q=80"
           alt="Livreur professionnel transportant un meuble"
           loading="lazy"
           className="w-full h-full object-cover"

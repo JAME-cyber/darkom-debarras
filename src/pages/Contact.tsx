@@ -96,7 +96,7 @@ export default function Contact() {
     <main className="pt-16 sm:pt-20 md:pt-28">
       <div className="relative h-48 sm:h-64 md:h-80 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1758876017967-c023c40c0a53?auto=format&fit=crop&w=1600&q=80"
+          src="https://images.pexels.com/photos/3760514/pexels-photo-3760514.jpeg?auto=fit&crop=w=1600&q=80"
           alt="Service client professionnel"
           loading="lazy"
           className="w-full h-full object-cover"

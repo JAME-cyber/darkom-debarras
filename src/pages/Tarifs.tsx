@@ -89,7 +89,7 @@ export default function Tarifs() {
     <main className="pt-16 sm:pt-20 md:pt-28">
       <div className="relative h-48 sm:h-64 md:h-80 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1663091386564-f8c07caad36e?auto=format&fit=crop&w=1600&q=80"
+          src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=fit&crop=w=1600&q=80"
           alt="Nettoyage professionnel d'intérieur"
           loading="lazy"
           className="w-full h-full object-cover"

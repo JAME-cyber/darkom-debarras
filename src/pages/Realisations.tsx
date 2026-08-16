@@ -8,7 +8,7 @@ const realizations = [
     description: "Villa de 150m² vidée entièrement en une journée. Tri, recyclage et dons aux associations.",
     before: "Villa encombrée après départ",
     after: "Villa vide et prête à vendre",
-    image: "https://images.unsplash.com/photo-1762279938691-7effe62a77b7?auto=format&fit=crop&w=600&q=80"
+    image: "https://images.pexels.com/photos/35493888/pexels-photo-35493888.jpeg?auto=fit&crop=w=600&q=80"
   },
   {
     title: "Vide grenier Annemasse",
@@ -16,7 +16,7 @@ const realizations = [
     description: "Grenier de 40 ans de rangement familial. Valorisation des objets et évacuation des déchets.",
     before: "Grenier débordant d'objets",
     after: "Grenier vide et nettoyé",
-    image: "https://images.unsplash.com/photo-1721825176410-eccd4943e36b?auto=format&fit=crop&w=600&q=80"
+    image: "https://images.pexels.com/photos/8082327/pexels-photo-8082327.jpeg?auto=fit&crop=w=600&q=80"
   },
   {
     title: "Succession Thonon",
@@ -24,7 +24,7 @@ const realizations = [
     description: "Appartement de 80m² après décès. Approche respectueuse et accompagnement familial.",
     before: "Appartement à vider",
     after: "Appartement remis à neuf",
-    image: "https://images.unsplash.com/photo-1706545340860-1ec0acd1bfe6?auto=format&fit=crop&w=600&q=80"
+    image: "https://images.pexels.com/photos/35493911/pexels-photo-35493911.jpeg?auto=fit&crop=w=600&q=80"
   },
   {
     title: "Nettoyage local commercial",
@@ -32,7 +32,7 @@ const realizations = [
     description: "Bureau de 200m² vidé et nettoyé pour rénovation. Gestion du mobilier et équipements.",
     before: "Bureau à desservir",
     after: "Local prêt pour travaux",
-    image: "https://images.unsplash.com/photo-1690541772642-29fefa1817c8?auto=format&fit=crop&w=600&q=80"
+    image: "https://images.pexels.com/photos/7750129/pexels-photo-7750129.jpeg?auto=fit&crop=w=600&q=80"
   },
   {
     title: "Vide cave complexe",
@@ -40,7 +40,7 @@ const realizations = [
     description: "Cave avec de nombreux objets hétéroclites. Tri minutieux et évacuation sélective.",
     before: "Cave encombrée",
     after: "Cave récupérée",
-    image: "https://images.unsplash.com/photo-1698226927995-a78c836cb42b?auto=format&fit=crop&w=600&q=80"
+    image: "https://images.pexels.com/photos/35539075/pexels-photo-35539075.jpeg?auto=fit&crop=w=600&q=80"
   },
   {
     title: "Débarras maison de retraite",
@@ -48,7 +48,7 @@ const realizations = [
     description: "Logement familial vidé avec soin. Tri des effets personnels et valorisation.",
     before: "Maison à vider",
     after: "Maison vide et nettoyée",
-    image: "https://images.unsplash.com/photo-1774716925810-e923c8206ed5?auto=format&fit=crop&w=600&q=80"
+    image: "https://images.pexels.com/photos/35493905/pexels-photo-35493905.jpeg?auto=fit&crop=w=600&q=80"
   }
 ];
 
@@ -63,7 +63,7 @@ export default function Realisations() {
     <main className="pt-16 sm:pt-20 md:pt-28">
       <div className="relative h-48 sm:h-64 md:h-80 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1683141043361-b927d1cb8694?auto=format&fit=crop&w=1600&q=80"
+          src="https://images.pexels.com/photos/35493911/pexels-photo-35493911.jpeg?auto=fit&crop=w=1600&q=80"
           alt="Réalisations de débarras professionnel"
           className="w-full h-full object-cover"
         />
