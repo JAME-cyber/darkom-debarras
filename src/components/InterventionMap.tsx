@@ -1,7 +1,7 @@
 import Button from './Button';
 
 const zones = [
-  { name: 'Fillinges', x: 58, y: 55, base: true, labelDx: 0, labelDy: -3 },
+  { name: 'Fillinges', x: 58, y: 55, base: true, labelDx: 0, labelDy: -3, hideLabel: true },
   { name: 'Annemasse', x: 52, y: 62, base: false, labelDx: -2, labelDy: 4 },
   { name: 'Annecy', x: 42, y: 55, base: false, labelDx: 0, labelDy: -3 },
   { name: 'Thonon-les-Bains', x: 50, y: 78, base: false, labelDx: 0, labelDy: 5 },
@@ -79,6 +79,7 @@ export default function InterventionMap() {
                         opacity="0.5"
                       />
                     )}
+                    {!zone.hideLabel && (
                     <text
                       x={zone.x + zone.labelDx}
                       y={zone.y + zone.labelDy}
@@ -89,6 +90,7 @@ export default function InterventionMap() {
                     >
                       {zone.name}
                     </text>
+                    )}
                   </g>
                 ))}
 
@@ -128,7 +130,6 @@ export default function InterventionMap() {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold text-primary mb-4">Villes principales desservies</h3>
             <div className="flex flex-wrap items-center gap-2 mb-6">
               {zones.map((zone) => (
                 <span
