@@ -3,34 +3,37 @@ import useSEO from '../hooks/useSEO';
 
 const pricing = [
   {
-    title: "Débarras simple",
-    price: "À partir de 250€",
+    title: "Cave, grenier, garage",
+    price: "275 – 825 €",
+    volume: "5 à 15 m³ · 55 €/m³",
     description: "Pour les petits espaces ou débarras ciblés",
     features: [
-      "Studio ou petite surface",
-      "Volume jusqu'à 10m³",
+      "Cave, grenier, garage, dépendance",
+      "Volume jusqu'à 15 m³",
       "Tri de base",
       "Évacuation des encombrants",
       "Nettoyage sommaire (sur demande)"
     ]
   },
   {
-    title: "Débarras standard",
-    price: "À partir de 500€",
+    title: "Appartement T1 – T3",
+    price: "1 100 – 3 300 €",
+    volume: "20 à 60 m³ · 55 €/m³",
     description: "Pour les appartements et maisons de taille moyenne",
     features: [
-      "Appartement ou maison T2-T3",
-      "Volume jusqu'à 30m³",
+      "Studio, T2, T3",
+      "Volume jusqu'à 60 m³",
       "Tri complet",
-      "Valorisation des biens",
+      "Valorisation des biens déduite du devis",
       "Nettoyage final (sur demande)",
       "Intervention 48-72h"
     ],
     featured: true
   },
   {
-    title: "Débarras complet",
-    price: "À partir de 1000€",
+    title: "Maison complète",
+    price: "4 400 € et +",
+    volume: "80 m³ et plus · 55 €/m³",
     description: "Pour les grandes surfaces et débarras complexes",
     features: [
       "Maison T4 et plus",
@@ -81,7 +84,7 @@ const process = [
 export default function Tarifs() {
   useSEO({
     title: 'Tarifs débarras | Darkom-Debarras Haute-Savoie',
-    description: 'Tarifs transparents pour le débarras en Haute-Savoie : à partir de 250€. Débarras simple, standard ou complet. Devis gratuit et personnalisé sous 24h.',
+    description: 'Tarifs transparents au m³ pour le débarras en Haute-Savoie : 55 €/m³, cave dès 275 €, maison complète sur devis. Valorisation des biens déduite. Devis gratuit sous 24h.',
     canonical: '/tarifs',
   });
 
@@ -128,7 +131,8 @@ export default function Tarifs() {
                   </div>
                 )}
                 <h3 className="text-xl font-bold text-primary mb-2">{plan.title}</h3>
-                <p className="text-3xl font-bold text-primary-light mb-2">{plan.price}</p>
+                <p className="text-3xl font-bold text-primary-light mb-1">{plan.price}</p>
+                <p className="text-accent text-sm font-semibold mb-2">{plan.volume}</p>
                 <p className="text-muted text-sm mb-6">{plan.description}</p>
                 
                 <ul className="space-y-3 mb-8">
@@ -168,6 +172,32 @@ export default function Tarifs() {
                   <p className="text-sm text-muted">{item.description}</p>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Bloc valorisation */}
+          <div className="mt-16 bg-primary text-white rounded-2xl p-8 md:p-12 shadow-lg">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">
+              La valorisation réduit votre facture
+            </h2>
+            <p className="text-white/85 text-center max-w-3xl mx-auto mb-6">
+              Meubles, objets d'art, électroménager fonctionnel : les biens revendables sont estimés
+              et leur valeur est <strong>déduite de votre devis</strong>. Selon le contenu, votre débarras
+              peut être fortement réduit, voire gratuit si la valorisation couvre l'intervention.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto text-center">
+              <div className="bg-white/10 rounded-xl p-4">
+                <p className="text-2xl font-bold text-accent">100 – 400 €</p>
+                <p className="text-sm text-white/75">Valorisation moyenne déduite par chantier</p>
+              </div>
+              <div className="bg-white/10 rounded-xl p-4">
+                <p className="text-2xl font-bold text-accent">0 €</p>
+                <p className="text-sm text-white/75">Débarras gratuit si la valorisation couvre tout</p>
+              </div>
+              <div className="bg-white/10 rounded-xl p-4">
+                <p className="text-2xl font-bold text-accent">100 %</p>
+                <p className="text-sm text-white/75">Tri, don et recyclage des objets récupérables</p>
+              </div>
             </div>
           </div>
 
