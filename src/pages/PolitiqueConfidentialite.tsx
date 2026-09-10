@@ -29,7 +29,7 @@ export default function PolitiqueConfidentialite() {
               <p className="text-muted leading-relaxed">
                 Le responsable du traitement des données personnelles est :<br />
                 <strong className="text-body">Darkom-Debarras</strong><br />
-                SIRET : 895 376 424 00019<br />
+                SIRET : 951 853 654 00014<br />
                 74250 Fillinges, Haute-Savoie<br />
                 Email : <a href="mailto:darkom-debarras@hotmail.com" className="text-primary-light hover:underline">darkom-debarras@hotmail.com</a><br />
                 Téléphone : <a href="tel:+33679447111" className="text-primary-light hover:underline">06 79 44 71 11</a>

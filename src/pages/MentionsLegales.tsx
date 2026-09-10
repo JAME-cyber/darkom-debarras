@@ -28,7 +28,7 @@ export default function MentionsLegales() {
               <h2 className="text-xl font-bold text-primary mb-3">1. Éditeur du site</h2>
               <p className="text-muted leading-relaxed">
                 <strong className="text-body">Darkom-Debarras</strong><br />
-                SIRET : 895 376 424 00019<br />
+                SIRET : 951 853 654 00014<br />
                 Siège social : 74250 Fillinges, Haute-Savoie, France<br />
                 Téléphone : <a href="tel:+33679447111" className="text-primary-light hover:underline">06 79 44 71 11</a><br />
                 Email : <a href="mailto:darkom-debarras@hotmail.com" className="text-primary-light hover:underline">darkom-debarras@hotmail.com</a><br />
@@ -40,9 +40,9 @@ export default function MentionsLegales() {
               <h2 className="text-xl font-bold text-primary mb-3">2. Hébergeur</h2>
               <p className="text-muted leading-relaxed">
                 Le site darkom-debarras.fr est hébergé par :<br />
-                <strong className="text-body">Hostinger International Ltd.</strong><br />
-                61 Lord Street Vauxhall, Port Louis, République de Maurice<br />
-                Site : <a href="https://www.hostinger.fr" target="_blank" rel="noopener noreferrer" className="text-primary-light hover:underline">www.hostinger.fr</a>
+                <strong className="text-body">Vercel Inc.</strong><br />
+                440 N Barranca Ave #4133, Covina, CA 91723, États-Unis<br />
+                Site : <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="text-primary-light hover:underline">vercel.com</a>
               </p>
             </div>
 
