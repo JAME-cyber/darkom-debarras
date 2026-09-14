@@ -20,7 +20,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14 sm:h-16 md:h-20">
           <Link to={prefix || '/'} className="flex items-center" aria-label={t.header.ariaHome}>
-            <div className="bg-white rounded-md px-2 py-1 shadow-sm flex flex-col items-center justify-center max-w-[150px] overflow-hidden">
+            <div className="bg-white rounded-md px-2 py-1 shadow-sm flex flex-col items-center justify-center w-[150px] overflow-hidden">
               <img
                 src={logoHeader}
                 alt="Logo Darkom Debarras"

@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <Link to={prefix || '/'} className="inline-block mb-4" aria-label="Darkom Debarras">
-              <div className="bg-white rounded-xl px-4 py-2 inline-flex flex-col items-center shadow-md overflow-hidden max-w-[200px]">
+              <div className="bg-white rounded-xl px-4 py-2 inline-flex flex-col items-center shadow-md overflow-hidden w-[200px]">
                 <img
                   src={logoFooter}
                   alt="Logo Darkom Debarras"
