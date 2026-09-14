@@ -1,50 +1,105 @@
 import Button from '../components/Button';
 import logoAPropos from '../assets/a_propos.png';
 import useSEO from '../hooks/useSEO';
+import { useLang } from '../i18n/LanguageContext';
+import type { Lang } from '../i18n/LanguageContext';
 
-const values = [
-  {
-    icon: (
-      <svg aria-hidden="true" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    ),
-    title: "Professionnalisme",
-    description: "Une équipe qualifiée, ponctuelle et respectueuse de votre espace."
+const icons = {
+  shield: (
+    <svg aria-hidden="true" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+    </svg>
+  ),
+  globe: (
+    <svg aria-hidden="true" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  ),
+  clock: (
+    <svg aria-hidden="true" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  ),
+  people: (
+    <svg aria-hidden="true" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg>
+  ),
+};
+
+interface ValueEntry {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+
+const valuesByLang: Record<Lang, ValueEntry[]> = {
+  fr: [
+    { icon: icons.shield, title: "Professionnalisme", description: "Une équipe qualifiée, ponctuelle et respectueuse de votre espace." },
+    { icon: icons.globe, title: "Écoresponsabilité", description: "Tri rigoureux, recyclage et dons aux associations locales." },
+    { icon: icons.clock, title: "Rapidité", description: "Intervention en 48-72h pour répondre à vos besoins urgents." },
+    { icon: icons.people, title: "proximité", description: "Une équipe locale attachée à la satisfaction de ses clients." }
+  ],
+  en: [
+    { icon: icons.shield, title: "Professionalism", description: "A qualified, punctual team that respects your space." },
+    { icon: icons.globe, title: "Eco-responsibility", description: "Rigorous sorting, recycling and donations to local charities." },
+    { icon: icons.clock, title: "Speed", description: "Response within 48-72h for your urgent needs." },
+    { icon: icons.people, title: "Local touch", description: "A local team committed to client satisfaction." }
+  ],
+};
+
+const content = {
+  fr: {
+    seo: {
+      title: 'À propos | Darkom-Debarras — Débarras écoresponsable en Haute-Savoie',
+      description: 'Darkom-Debarras, fondé par Laurie Decouvette à Fillinges. Service de débarras professionnel, écoresponsable et rapide en Haute-Savoie.',
+    },
+    title: 'À propos de Darkom-Debarras',
+    p1: 'Fondé à Fillinges en Haute-Savoie, Darkom-Debarras est votre partenaire de confiance pour tous vos projets de débarras.',
+    p2: "Avec des professionnels passionnés et formés, nous nous engageons à vous offrir un service irréprochable : équipe assurée RC Pro, intervention encadrée et tri responsable. Notre philosophie : libérer votre espace tout en respectant l'environnement.",
+    p3: "Chaque intervention est pour nous l'occasion de créer un espace de vie plus agréable pour nos clients, tout en contribuant à une économie circulaire locale par le tri, le recyclage et les dons aux associations.",
+    cta: 'Nous contacter',
+    logoAlt: 'Logo Darkom Debarras – Solutions de débarras éco-responsables',
+    logoTagline: 'SOLUTIONS DE DÉBARRAS ÉCO-RESPONSABLES',
+    statClients: 'Clients satisfaits',
+    statSpeed: 'Intervention rapide',
+    teamTitle: 'Notre équipe',
+    founderName: 'Laurie Decouvette',
+    founderRole: 'Fondatrice & Gérante',
+    founderP1: "Passionnée par son métier, Laurie a fondé Darkom-Debarras avec la conviction qu'un service de débarras peut être à la fois professionnel, humain et écoresponsable.",
+    founderP2: "Entourée d'une équipe expérimentée et dévouée, elle veille personnellement à la satisfaction de chaque client. Du premier contact à la finalisation de l'intervention, Laurie et son équipe vous garantissent un accompagnement soigné, efficace et dans le respect total de votre espace et de vos biens.",
+    valuesTitle: 'Nos valeurs',
   },
-  {
-    icon: (
-      <svg aria-hidden="true" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-    title: "Écoresponsabilité",
-    description: "Tri rigoureux, recyclage et dons aux associations locales."
+  en: {
+    seo: {
+      title: 'About us | Darkom-Debarras — Eco-friendly house clearance in Haute-Savoie',
+      description: 'Darkom-Debarras, founded by Laurie Decouvette in Fillinges. Professional, eco-friendly and fast house clearance in Haute-Savoie, near Geneva.',
+    },
+    title: 'About Darkom-Debarras',
+    p1: 'Founded in Fillinges, Haute-Savoie, Darkom-Debarras is your trusted partner for all your house clearance projects.',
+    p2: 'With trained, passionate professionals, we are committed to delivering an impeccable service: fully insured team, supervised interventions and responsible sorting. Our philosophy: free up your space while respecting the environment.',
+    p3: 'Every job is an opportunity to create a more pleasant living space for our clients, while contributing to a local circular economy through sorting, recycling and donations to charities.',
+    cta: 'Contact us',
+    logoAlt: 'Darkom Debarras logo – Eco-friendly clearance solutions',
+    logoTagline: 'ECO-FRIENDLY HOUSE CLEARANCE',
+    statClients: 'Happy clients',
+    statSpeed: 'Fast response',
+    teamTitle: 'Our team',
+    founderName: 'Laurie Decouvette',
+    founderRole: 'Founder & Manager',
+    founderP1: 'Passionate about her trade, Laurie founded Darkom-Debarras with the conviction that a clearance service can be professional, humane and eco-friendly all at once.',
+    founderP2: 'Supported by an experienced, dedicated team, she personally looks after every client\u2019s satisfaction. From first contact to completion, Laurie and her team guarantee careful, efficient support with total respect for your space and belongings.',
+    valuesTitle: 'Our values',
   },
-  {
-    icon: (
-      <svg aria-hidden="true" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-    title: "Rapidité",
-    description: "Intervention en 48-72h pour répondre à vos besoins urgents."
-  },
-  {
-    icon: (
-      <svg aria-hidden="true" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-      </svg>
-    ),
-    title: "proximité",
-    description: "Une équipe locale attachée à la satisfaction de ses clients."
-  }
-];
+};
 
 export default function APropos() {
+  const { lang, prefix } = useLang();
+  const t = content[lang];
+
   useSEO({
-    title: 'À propos | Darkom-Debarras — Débarras écoresponsable en Haute-Savoie',
-    description: 'Darkom-Debarras, fondé par Laurie Decouvette à Fillinges. Service de débarras professionnel, écoresponsable et rapide en Haute-Savoie.',
+    title: t.seo.title,
+    description: t.seo.description,
     canonical: '/a-propos',
   });
 
@@ -55,42 +110,42 @@ export default function APropos() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-12 md:mb-20">
             <div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 sm:mb-6">
-                À propos de Darkom-Debarras
+                {t.title}
               </h1>
               <p className="text-muted text-base sm:text-lg mb-4 sm:mb-6">
-                Fondé à Fillinges en Haute-Savoie, Darkom-Debarras est votre partenaire de confiance pour tous vos projets de débarras.
+                {t.p1}
               </p>
               <p className="text-muted mb-6">
-                Avec des professionnels passionnés et formés, nous nous engageons à vous offrir un service irréprochable : équipe assurée RC Pro, intervention encadrée et tri responsable. Notre philosophie : libérer votre espace tout en respectant l'environnement.
+                {t.p2}
               </p>
               <p className="text-muted mb-8">
-                Chaque intervention est pour nous l'occasion de créer un espace de vie plus agréable pour nos clients, tout en contribuant à une économie circulaire locale par le tri, le recyclage et les dons aux associations.
+                {t.p3}
               </p>
-              <Button to="/contact" variant="primary">
-                Nous contacter
+              <Button to={`${prefix}/contact`} variant="primary">
+                {t.cta}
               </Button>
             </div>
-            
+
             <div className="relative flex items-center justify-center">
               <div className="w-full max-w-md bg-gradient-to-br from-primary to-primary-light rounded-3xl shadow-2xl p-8 flex flex-col items-center gap-6">
                 <div className="bg-white rounded-2xl px-6 py-4 w-full flex flex-col items-center justify-center shadow-lg overflow-hidden max-w-[300px]">
                   <img
                     src={logoAPropos}
-                    alt="Logo Darkom Debarras – Solutions de débarras éco-responsables"
+                    alt={t.logoAlt}
                     className="h-[90px] w-auto object-contain"
                   />
                   <p className="font-bold text-primary text-center mt-2 text-[10px] whitespace-normal w-full">
-                    SOLUTIONS DE DÉBARRAS ÉCO-RESPONSABLES
+                    {t.logoTagline}
                   </p>
                 </div>
                 <div className="grid grid-cols-2 gap-4 w-full">
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center">
                     <p className="text-3xl font-bold text-white">25</p>
-                    <p className="text-white/70 text-sm mt-1">Clients satisfaits</p>
+                    <p className="text-white/70 text-sm mt-1">{t.statClients}</p>
                   </div>
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center">
                     <p className="text-3xl font-bold text-white">48h</p>
-                    <p className="text-white/70 text-sm mt-1">Intervention rapide</p>
+                    <p className="text-white/70 text-sm mt-1">{t.statSpeed}</p>
                   </div>
                 </div>
               </div>
@@ -99,21 +154,21 @@ export default function APropos() {
 
           <div className="mb-20">
             <h2 className="text-3xl font-bold text-primary mb-12 text-center">
-              Notre équipe
+              {t.teamTitle}
             </h2>
-            
+
             <div className="max-w-3xl mx-auto">
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 text-center">
                 <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl font-bold text-white">LD</span>
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-1">Laurie Decouvette</h3>
-                <p className="text-accent font-semibold mb-4">Fondatrice &amp; Gérante</p>
+                <h3 className="text-xl font-bold text-primary mb-1">{t.founderName}</h3>
+                <p className="text-accent font-semibold mb-4">{t.founderRole}</p>
                 <p className="text-muted text-lg mb-4">
-                  Passionnée par son métier, Laurie a fondé Darkom-Debarras avec la conviction qu'un service de débarras peut être à la fois professionnel, humain et écoresponsable.
+                  {t.founderP1}
                 </p>
                 <p className="text-muted">
-                  Entourée d'une équipe expérimentée et dévouée, elle veille personnellement à la satisfaction de chaque client. Du premier contact à la finalisation de l'intervention, Laurie et son équipe vous garantissent un accompagnement soigné, efficace et dans le respect total de votre espace et de vos biens.
+                  {t.founderP2}
                 </p>
               </div>
             </div>
@@ -121,12 +176,12 @@ export default function APropos() {
 
           <div>
             <h2 className="text-3xl font-bold text-primary mb-12 text-center">
-              Nos valeurs
+              {t.valuesTitle}
             </h2>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {values.map((value, index) => (
-                <div 
+              {valuesByLang[lang].map((value, index) => (
+                <div
                   key={index}
                   className="bg-white rounded-2xl p-8 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-shadow"
                 >

@@ -11,6 +11,8 @@ import StepContact from './StepContact';
 import StepRecapitulatif from './StepRecapitulatif';
 import SimulatorNavigation from './SimulatorNavigation';
 import { sendSimulatorEmail } from '../../services/emailService';
+import { useLang } from '../../i18n/LanguageContext';
+import { simulatorContent } from './simulatorContent';
 import './Simulator.css';
 
 const initialData: SimulatorData = {
@@ -30,23 +32,26 @@ const initialData: SimulatorData = {
   telephone: '',
 };
 
-const STEPS = [
-  { key: 'service', component: StepServiceType, title: 'Type de service' },
-  { key: 'bien', component: StepBien, title: 'Type de bien' },
-  { key: 'volume', component: StepVolume, title: 'Volume à débarrasser' },
-  { key: 'accessibilite', component: StepAccessibilite, title: 'Accessibilité' },
-  { key: 'objets', component: StepObjets, title: 'Objets à trier' },
-  { key: 'localisation', component: StepLocalisation, title: 'Localisation' },
-  { key: 'contact', component: StepContact, title: 'Vos coordonnées' },
-  { key: 'recap', component: StepRecapitulatif, title: 'Récapitulatif' },
-];
-
 export default function Simulator() {
+  const { lang } = useLang();
+  const t = simulatorContent[lang];
+
   const [currentStep, setCurrentStep] = useState(0);
   const [data, setData] = useState<SimulatorData>(initialData);
   const [isComplete, setIsComplete] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [sendError, setSendError] = useState('');
+
+  const STEPS = [
+    { key: 'service', component: StepServiceType, title: t.steps.service },
+    { key: 'bien', component: StepBien, title: t.steps.bien },
+    { key: 'volume', component: StepVolume, title: t.steps.volume },
+    { key: 'accessibilite', component: StepAccessibilite, title: t.steps.accessibilite },
+    { key: 'objets', component: StepObjets, title: t.steps.objets },
+    { key: 'localisation', component: StepLocalisation, title: t.steps.localisation },
+    { key: 'contact', component: StepContact, title: t.steps.contact },
+    { key: 'recap', component: StepRecapitulatif, title: t.steps.recap },
+  ];
 
   const handleNext = (stepData: Partial<SimulatorData>) => {
     const newData = { ...data, ...stepData };
@@ -85,7 +90,7 @@ export default function Simulator() {
       });
       setIsComplete(true);
     } catch {
-      setSendError('Erreur lors de l\'envoi. Veuillez réessayer.');
+      setSendError(t.error);
     } finally {
       setIsSending(false);
     }
@@ -118,37 +123,37 @@ export default function Simulator() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3>Demande envoyée avec succès !</h3>
-          <p className="simulator-complete-name">Merci {data.nom},</p>
-          <p>Votre demande de devis pour <strong>{serviceName}</strong> a bien été enregistrée. Nous vous recontacterons sous 24h au <strong>{data.telephone}</strong>.</p>
+          <h3>{t.complete.title}</h3>
+          <p className="simulator-complete-name">{t.complete.thanks} {data.nom},</p>
+          <p>{t.complete.text1} <strong>{serviceName}</strong> {t.complete.text2} <strong>{data.telephone}</strong>.</p>
 
           <div className="simulator-price-estimate">
-            <span className="simulator-price-label">Estimation indicative</span>
+            <span className="simulator-price-label">{t.complete.priceLabel}</span>
             <span className="simulator-price-value">{price.min}€ - {price.max}€</span>
-            <span className="simulator-price-info">Prix final confirmé par téléphone</span>
+            <span className="simulator-price-info">{t.complete.priceInfo}</span>
           </div>
 
           <div className="simulator-complete-summary">
-            <p><strong>Lieu :</strong> {data.lieu} ({data.codePostal})</p>
-            <p><strong>E-mail :</strong> {data.email}</p>
+            <p><strong>{t.complete.lieuLabel}</strong> {data.lieu} ({data.codePostal})</p>
+            <p><strong>{t.complete.emailLabel}</strong> {data.email}</p>
           </div>
 
           <div className="simulator-complete-actions">
             <button onClick={handleReset} className="simulator-continue-btn" style={{ width: 'auto', marginTop: 0 }}>
-              Nouvelle simulation
+              {t.complete.restart}
             </button>
           </div>
         </div>
       ) : isSending ? (
         <div className="simulator-complete">
           <div className="simulator-complete-icon">
-            <svg aria-hidden="true" className="w-16 h-16 animate-spin" fill="none" viewBox="0 0 24 24">
+            <svg className="w-16 h-16 animate-spin" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
           </div>
-          <h3>Envoi en cours...</h3>
-          <p>Votre demande est en cours d'envoi, veuillez patienter.</p>
+          <h3>{t.sending.title}</h3>
+          <p>{t.sending.text}</p>
         </div>
       ) : (
         <>
@@ -156,7 +161,7 @@ export default function Simulator() {
             <div style={{ textAlign: 'center', padding: '1rem', color: '#dc2626', marginBottom: '1rem' }}>
               <p>{sendError}</p>
               <button onClick={() => setSendError('')} className="simulator-continue-btn" style={{ width: 'auto', marginTop: '0.5rem' }}>
-                Réessayer
+                {t.retry}
               </button>
             </div>
           )}
@@ -166,7 +171,7 @@ export default function Simulator() {
           </div>
 
           <div className="simulator-step-indicator">
-            <span className="simulator-step-number">Étape {currentStep + 1} / {STEPS.length}</span>
+            <span className="simulator-step-number">{t.nav.step} {currentStep + 1} / {STEPS.length}</span>
             <span className="simulator-step-title">{STEPS[currentStep].title}</span>
           </div>
 
@@ -186,3 +191,4 @@ export default function Simulator() {
     </div>
   );
 }
+

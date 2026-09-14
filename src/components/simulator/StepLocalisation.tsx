@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import type { StepProps } from './types';
+import { useLang } from '../../i18n/LanguageContext';
+import { simulatorContent } from './simulatorContent';
 
 export default function StepLocalisation({ data, onNext }: StepProps) {
+  const { lang } = useLang();
+  const t = simulatorContent[lang].localisation;
+
   const [ville, setVille] = useState(data.lieu || '');
   const [codePostal, setCodePostal] = useState(data.codePostal || '');
 
@@ -19,24 +24,24 @@ export default function StepLocalisation({ data, onNext }: StepProps) {
 
   return (
     <div className="simulator-step">
-      <h2>Où se trouve le bien ?</h2>
-      <p className="simulator-subtitle">Précisez la localisation pour le devis</p>
+      <h2>{t.title}</h2>
+      <p className="simulator-subtitle">{t.subtitle}</p>
 
       <div className="simulator-form-fields">
         <div className="simulator-form-field">
-          <label htmlFor="ville">Ville *</label>
+          <label htmlFor="ville">{t.villeLabel}</label>
           <input
             type="text"
             id="ville"
             value={ville}
             onChange={(e) => setVille(e.target.value)}
-            placeholder="Ex: Fillinges, Annemasse..."
+            placeholder={t.villePlaceholder}
             className="simulator-input"
           />
         </div>
 
         <div className="simulator-form-field">
-          <label htmlFor="codePostal">Code postal *</label>
+          <label htmlFor="codePostal">{t.cpLabel}</label>
           <input
             type="text"
             id="codePostal"
@@ -54,7 +59,7 @@ export default function StepLocalisation({ data, onNext }: StepProps) {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
-        <span>Intervention en Haute-Savoie (74) et départements limitrophes</span>
+        <span>{t.help}</span>
       </div>
 
       <button
@@ -62,7 +67,7 @@ export default function StepLocalisation({ data, onNext }: StepProps) {
         onClick={handleSubmit}
         disabled={!canContinue}
       >
-        Valider et continuer
+        {t.submit}
       </button>
     </div>
   );

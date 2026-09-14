@@ -1,4 +1,5 @@
 import Button from './Button';
+import { useLang } from '../i18n/LanguageContext';
 
 const zones = [
   { name: 'Fillinges', x: 58, y: 55, base: true, labelDx: 0, labelDy: -3, hideLabel: true },
@@ -21,20 +22,54 @@ const otherCities = [
   'Douvaux-le-Lac', 'Bons-en-Chablais'
 ];
 
+const content = {
+  fr: {
+    badge: "Zone d'intervention",
+    title: 'Nous intervenons dans toute la Haute-Savoie',
+    text: 'Basés à Fillinges, notre équipe se déplace dans tout le département 74 pour vos projets de débarras.',
+    lakeLabel: 'Lac Léman',
+    switzerland: 'Suisse',
+    legendBase: 'Notre base',
+    legendZones: "Zones d'intervention",
+    alsoTitle: 'Et aussi...',
+    alsoText: ' et toutes les communes de Haute-Savoie.',
+    fastTitle: 'Intervention rapide',
+    fastText: 'Déplacement et devis gratuits dans tout le département. Intervention sous 48-72h.',
+    cta: 'Demander un devis gratuit',
+  },
+  en: {
+    badge: 'Service area',
+    title: 'We cover the whole of Haute-Savoie',
+    text: 'Based in Fillinges, our team travels across the entire 74 department for your clearance projects.',
+    lakeLabel: 'Lake Geneva',
+    switzerland: 'Switzerland',
+    legendBase: 'Our base',
+    legendZones: 'Service areas',
+    alsoTitle: 'And also...',
+    alsoText: ' and every commune in Haute-Savoie.',
+    fastTitle: 'Fast response',
+    fastText: 'Free travel and quotes across the department. Work carried out within 48-72h.',
+    cta: 'Request a free quote',
+  },
+};
+
 export default function InterventionMap() {
+  const { lang, prefix } = useLang();
+  const t = content[lang];
+
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-primary-light/10 text-primary-light px-4 py-2 rounded-full text-sm font-medium mb-4">
             <span className="w-2 h-2 bg-primary-light rounded-full"></span>
-            Zone d'intervention
+            {t.badge}
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            Nous intervenons dans toute la Haute-Savoie
+            {t.title}
           </h2>
           <p className="text-muted max-w-2xl mx-auto">
-            Basés à Fillinges, notre équipe se déplace dans tout le département 74 pour vos projets de débarras.
+            {t.text}
           </p>
         </div>
 
@@ -95,7 +130,7 @@ export default function InterventionMap() {
                 ))}
 
                 <text x="45" y="96" textAnchor="middle" fill="#5a5a5a" fontSize="1.8" opacity="0.3">
-                  Lac Léman
+                  {t.lakeLabel}
                 </text>
                 <path
                   d="M20 90 Q40 92 60 95 Q70 96 80 92"
@@ -109,7 +144,7 @@ export default function InterventionMap() {
                   Ain (01)
                 </text>
                 <text x="80" y="65" textAnchor="start" fill="#5a5a5a" fontSize="1.5" opacity="0.3">
-                  Suisse
+                  {t.switzerland}
                 </text>
                 <text x="45" y="8" textAnchor="middle" fill="#5a5a5a" fontSize="1.5" opacity="0.3">
                   Savoie (73)
@@ -120,11 +155,11 @@ export default function InterventionMap() {
             <div className="flex items-center justify-center gap-6 mt-4 text-xs text-muted">
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 bg-accent rounded-full"></span>
-                Notre base
+                {t.legendBase}
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 bg-primary rounded-full"></span>
-                Zones d'intervention
+                {t.legendZones}
               </div>
             </div>
           </div>
@@ -150,9 +185,9 @@ export default function InterventionMap() {
               ))}
             </div>
 
-            <h3 className="text-lg font-bold text-primary mb-3">Et aussi...</h3>
+            <h3 className="text-lg font-bold text-primary mb-3">{t.alsoTitle}</h3>
             <p className="text-muted text-sm leading-relaxed mb-6">
-              {otherCities.join(', ')} et toutes les communes de Haute-Savoie.
+              {otherCities.join(', ')}{t.alsoText}
             </p>
 
             <div className="bg-surface rounded-xl p-6 border border-gray-100">
@@ -163,15 +198,15 @@ export default function InterventionMap() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-semibold text-primary">Intervention rapide</p>
-                  <p className="text-muted text-sm">Déplacement et devis gratuits dans tout le département. Intervention sous 48-72h.</p>
+                  <p className="font-semibold text-primary">{t.fastTitle}</p>
+                  <p className="text-muted text-sm">{t.fastText}</p>
                 </div>
               </div>
             </div>
 
             <div className="mt-6">
-              <Button to="/contact" variant="primary">
-                Demander un devis gratuit
+              <Button to={`${prefix}/contact`} variant="primary">
+                {t.cta}
               </Button>
             </div>
           </div>

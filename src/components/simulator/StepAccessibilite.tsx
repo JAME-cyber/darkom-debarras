@@ -1,28 +1,32 @@
 import { useState } from 'react';
 import type { StepProps } from './types';
+import { useLang } from '../../i18n/LanguageContext';
+import { simulatorContent } from './simulatorContent';
 
 export default function StepAccessibilite({ data, onNext }: StepProps) {
+  const { lang } = useLang();
+  const t = simulatorContent[lang].accessibilite;
+
   const [localEtage, setLocalEtage] = useState(data.etage || '');
   const [localAscenseur, setLocalAscenseur] = useState(data.ascenseur || '');
   const [localAccessible, setLocalAccessible] = useState(data.accessible || '');
 
-  const etageOptions = [
-    { id: 'rdc', label: 'RDC', desc: 'Rez-de-chaussée' },
-    { id: '1', label: '1er étage', desc: '' },
-    { id: '2', label: '2e étage', desc: '' },
-    { id: '3', label: '3e étage et +', desc: '' },
-  ];
+  const etageOptions = Object.entries(t.etageOptions).map(([id, label]) => ({
+    id,
+    label,
+    desc: id === 'rdc' ? t.rdcDesc : '',
+  }));
 
   const ascenseurOptions = [
-    { id: 'oui', label: 'Oui', desc: 'Ascenseur disponible' },
-    { id: 'non', label: 'Non', desc: 'Sans ascenseur' },
+    { id: 'oui', label: t.ascenseurOui, desc: t.ascenseurOuiDesc },
+    { id: 'non', label: t.ascenseurNon, desc: t.ascenseurNonDesc },
   ];
 
-  const accessibiliteOptions = [
-    { id: 'facile', label: 'Accès facile', desc: 'Portes larges, passage dégagé' },
-    { id: 'difficile', label: 'Accès difficile', desc: 'Escaliers étroits, tournants' },
-    { id: 'tres_difficile', label: 'Très difficile', desc: 'Spirale, hauteur, sous-sol' },
-  ];
+  const accessibiliteOptions = Object.entries(t.accessOptions).map(([id, label]) => ({
+    id,
+    label,
+    desc: t.accessDesc[id],
+  }));
 
   const canContinue = localEtage !== '' && localAscenseur !== '' && localAccessible !== '';
 
@@ -34,11 +38,11 @@ export default function StepAccessibilite({ data, onNext }: StepProps) {
 
   return (
     <div className="simulator-step">
-      <h2>L'accessibilité du bien</h2>
-      <p className="simulator-subtitle">Précisez l'étage et l'accès au logement</p>
+      <h2>{t.title}</h2>
+      <p className="simulator-subtitle">{t.subtitle}</p>
 
       <div className="simulator-form-group">
-        <label>Étage du bien</label>
+        <label>{t.etageLabel}</label>
         <div className="simulator-options-row">
           {etageOptions.map((option) => (
             <button
@@ -54,7 +58,7 @@ export default function StepAccessibilite({ data, onNext }: StepProps) {
       </div>
 
       <div className="simulator-form-group">
-        <label>Ascenseur disponible ?</label>
+        <label>{t.ascenseurLabel}</label>
         <div className="simulator-options-row">
           {ascenseurOptions.map((option) => (
             <button
@@ -70,7 +74,7 @@ export default function StepAccessibilite({ data, onNext }: StepProps) {
       </div>
 
       <div className="simulator-form-group">
-        <label>Accès général</label>
+        <label>{t.accessLabel}</label>
         <div className="simulator-options-row">
           {accessibiliteOptions.map((option) => (
             <button
@@ -86,7 +90,7 @@ export default function StepAccessibilite({ data, onNext }: StepProps) {
       </div>
 
       <button className="simulator-continue-btn" onClick={handleContinue} disabled={!canContinue}>
-        Continuer
+        {simulatorContent[lang].nav.continue}
       </button>
     </div>
   );

@@ -1,28 +1,28 @@
 import type { StepProps } from './types';
+import { useLang } from '../../i18n/LanguageContext';
+import { simulatorContent } from './simulatorContent';
 
-const BIEN_TYPES = [
-  { id: 'maison', label: 'Maison', emoji: '🏠', desc: 'Maison individuelle' },
-  { id: 'appartement', label: 'Appartement', emoji: '🏢', desc: 'Appartement individuel ou collectif' },
-  { id: 'cave', label: 'Cave', emoji: '🏚️', desc: 'Sous-sol / espace de stockage' },
-  { id: 'grenier', label: 'Grenier', emoji: '🏰', desc: 'Combles / grenier' },
-  { id: 'garage', label: 'Garage', emoji: '🚗', desc: 'Garage individuel' },
-  { id: 'local', label: 'Local professionnel', emoji: '🏬', desc: 'Espace commercial / bureaux' },
-];
+const BIEN_EMOJIS: Record<string, string> = {
+  maison: '🏠', appartement: '🏢', cave: '🏚️', grenier: '🏰', garage: '🚗', local: '🏬',
+};
 
 export default function StepBien({ data, onNext }: StepProps) {
+  const { lang } = useLang();
+  const t = simulatorContent[lang].bien;
+
   return (
     <div className="simulator-step">
-      <h2>Quel type de bien à débarrasser ?</h2>
-      <p className="simulator-subtitle">Sélectionnez le type de bien</p>
+      <h2>{t.title}</h2>
+      <p className="simulator-subtitle">{t.subtitle}</p>
 
       <div className="simulator-options-grid">
-        {BIEN_TYPES.map((bien) => (
+        {Object.entries(t.types).map(([id, bien]) => (
           <button
-            key={bien.id}
-            className={`simulator-option-card ${data.bientype === bien.id ? 'selected' : ''}`}
-            onClick={() => onNext({ bientype: bien.id })}
+            key={id}
+            className={`simulator-option-card ${data.bientype === id ? 'selected' : ''}`}
+            onClick={() => onNext({ bientype: id })}
           >
-            <span className="simulator-option-emoji">{bien.emoji}</span>
+            <span className="simulator-option-emoji">{BIEN_EMOJIS[id]}</span>
             <span className="simulator-option-label">{bien.label}</span>
             <span className="simulator-option-desc">{bien.desc}</span>
           </button>

@@ -1,11 +1,16 @@
 import type { StepProps } from './types';
 import { SERVICE_TYPES } from './types';
+import { useLang } from '../../i18n/LanguageContext';
+import { simulatorContent } from './simulatorContent';
 
 export default function StepServiceType({ data, onNext }: StepProps) {
+  const { lang } = useLang();
+  const t = simulatorContent[lang].serviceType;
+
   return (
     <div className="simulator-step">
-      <h2>Quel type de service recherchez-vous ?</h2>
-      <p className="simulator-subtitle">Sélectionnez la prestation qui correspond à votre besoin</p>
+      <h2>{t.title}</h2>
+      <p className="simulator-subtitle">{t.subtitle}</p>
 
       <div className="simulator-options-grid">
         {Object.entries(SERVICE_TYPES).map(([key, service]) => (
@@ -15,8 +20,8 @@ export default function StepServiceType({ data, onNext }: StepProps) {
             onClick={() => onNext({ typeBien: key })}
           >
             <span className="simulator-option-emoji">{service.emoji}</span>
-            <span className="simulator-option-label">{service.label}</span>
-            <span className="simulator-option-desc">{service.description}</span>
+            <span className="simulator-option-label">{t.types[key]?.label || service.label}</span>
+            <span className="simulator-option-desc">{t.types[key]?.description || service.description}</span>
           </button>
         ))}
       </div>

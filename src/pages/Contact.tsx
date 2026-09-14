@@ -3,14 +3,123 @@ import Button from '../components/Button';
 import Simulator from '../components/simulator/Simulator';
 import { sendContactEmail } from '../services/emailService';
 import useSEO from '../hooks/useSEO';
+import { useLang } from '../i18n/LanguageContext';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_REGEX = /^(?:\+33|0)[1-9]\d{8}$/;
 
+const content = {
+  fr: {
+    seo: {
+      title: 'Contact & devis gratuit | Darkom-Debarras Haute-Savoie',
+      description: 'Demandez votre devis gratuit de débarras en Haute-Savoie. Simulateur en ligne, formulaire ou téléphone. Réponse sous 24h, intervention 48-72h.',
+    },
+    heroTitle: 'Parlons de votre projet',
+    heroSubSim: 'Répondez à quelques questions pour obtenir une estimation personnalisée',
+    heroSubForm: 'Décrivez votre besoin et nous vous recontacterons rapidement',
+    heroImageAlt: 'Service client professionnel',
+    tabSimulator: 'Simulateur rapide',
+    tabForm: 'Formulaire classique',
+    successTitle: 'Message envoyé !',
+    successText: 'Merci pour votre demande. Nous vous recontacterons sous 24h pour discuter de votre projet de débarras.',
+    successCta: "Retour à l'accueil",
+    errNom: 'Le nom est requis',
+    errEmail: 'Email invalide',
+    errTel: 'Téléphone invalide (ex: 0612345678)',
+    errType: 'Sélectionnez un type de débarras',
+    errMessage: 'Le message est requis',
+    sendError: 'Une erreur est survenue. Appelez-nous au 06 79 44 71 11 ou envoyez un email à darkom-debarras@hotmail.com',
+    labelNom: 'Nom complet *',
+    labelTel: 'Téléphone *',
+    labelEmail: 'Email *',
+    labelType: 'Type de débarras *',
+    labelMessage: 'Message *',
+    placeholderNom: 'Votre nom',
+    placeholderTel: '06 XX XX XX XX',
+    placeholderEmail: 'votre@email.fr',
+    placeholderMessage: 'Décrivez votre projet (surface, volume approximatif, urgence, etc.)',
+    selectDefault: 'Sélectionnez...',
+    types: [
+      { value: 'maison', label: 'Débarras maison/appartement' },
+      { value: 'cave', label: 'Vide cave/grenier/garage' },
+      { value: 'succession', label: 'Succession' },
+      { value: 'professionnel', label: 'Local professionnel' },
+      { value: 'sinistre', label: 'Nettoyage après sinistre' },
+      { value: 'autre', label: 'Autre' },
+    ],
+    sending: 'Envoi en cours...',
+    submit: 'Envoyer ma demande de devis',
+    coordsTitle: 'Nos coordonnées',
+    addressLabel: 'Adresse',
+    addressValue: '74250 Fillinges, Haute-Savoie',
+    phoneLabel: 'Téléphone',
+    emailLabel: 'Email',
+    availabilityLabel: 'Disponibilité',
+    availabilityValue: 'Intervention 48-72h',
+    urgentTitle: 'Besoin urgent ?',
+    urgentText: 'Nous comprenons que certains débarras ne peuvent pas attendre. Appelez-nous directement pour une intervention rapide.',
+    urgentCta: 'Appeler le 06 79 44 71 11',
+  },
+  en: {
+    seo: {
+      title: 'Contact & free quote | Darkom-Debarras Haute-Savoie',
+      description: 'Request your free house clearance quote in Haute-Savoie. Online simulator, form or phone. Reply within 24h, work within 48-72h.',
+    },
+    heroTitle: "Let's talk about your project",
+    heroSubSim: 'Answer a few questions to get a personalised estimate',
+    heroSubForm: 'Describe your needs and we will get back to you quickly',
+    heroImageAlt: 'Professional customer service',
+    tabSimulator: 'Quick simulator',
+    tabForm: 'Standard form',
+    successTitle: 'Message sent!',
+    successText: 'Thank you for your request. We will get back to you within 24h to discuss your clearance project.',
+    successCta: 'Back to home',
+    errNom: 'Your name is required',
+    errEmail: 'Invalid email',
+    errTel: 'Invalid phone (e.g. 0612345678)',
+    errType: 'Please select a type of clearance',
+    errMessage: 'Message is required',
+    sendError: 'Something went wrong. Call us on 06 79 44 71 11 or email darkom-debarras@hotmail.com',
+    labelNom: 'Full name *',
+    labelTel: 'Phone *',
+    labelEmail: 'Email *',
+    labelType: 'Type of clearance *',
+    labelMessage: 'Message *',
+    placeholderNom: 'Your name',
+    placeholderTel: '06 XX XX XX XX',
+    placeholderEmail: 'you@email.com',
+    placeholderMessage: 'Describe your project (size, approximate volume, urgency, etc.)',
+    selectDefault: 'Select...',
+    types: [
+      { value: 'maison', label: 'House/flat clearance' },
+      { value: 'cave', label: 'Cellar/loft/garage clearance' },
+      { value: 'succession', label: 'Estate/probate' },
+      { value: 'professionnel', label: 'Commercial property' },
+      { value: 'sinistre', label: 'Post-disaster clean-up' },
+      { value: 'autre', label: 'Other' },
+    ],
+    sending: 'Sending...',
+    submit: 'Send my quote request',
+    coordsTitle: 'Contact details',
+    addressLabel: 'Address',
+    addressValue: '74250 Fillinges, Haute-Savoie',
+    phoneLabel: 'Phone',
+    emailLabel: 'Email',
+    availabilityLabel: 'Availability',
+    availabilityValue: 'Response 48-72h',
+    urgentTitle: 'Urgent need?',
+    urgentText: 'We understand that some clearances cannot wait. Call us directly for a rapid intervention.',
+    urgentCta: 'Call 06 79 44 71 11',
+  },
+};
+
 export default function Contact() {
+  const { lang, prefix } = useLang();
+  const t = content[lang];
+
   useSEO({
-    title: 'Contact & devis gratuit | Darkom-Debarras Haute-Savoie',
-    description: 'Demandez votre devis gratuit de débarras en Haute-Savoie. Simulateur en ligne, formulaire ou téléphone. Réponse sous 24h, intervention 48-72h.',
+    title: t.seo.title,
+    description: t.seo.description,
     canonical: '/contact',
   });
 
@@ -29,11 +138,11 @@ export default function Contact() {
 
   const validate = (): boolean => {
     const errors: Record<string, string> = {};
-    if (!formData.nom.trim()) errors.nom = 'Le nom est requis';
-    if (!EMAIL_REGEX.test(formData.email)) errors.email = 'Email invalide';
-    if (!PHONE_REGEX.test(formData.telephone.replace(/\s/g, ''))) errors.telephone = 'Téléphone invalide (ex: 0612345678)';
-    if (!formData.type) errors.type = 'Sélectionnez un type de débarras';
-    if (!formData.message.trim()) errors.message = 'Le message est requis';
+    if (!formData.nom.trim()) errors.nom = t.errNom;
+    if (!EMAIL_REGEX.test(formData.email)) errors.email = t.errEmail;
+    if (!PHONE_REGEX.test(formData.telephone.replace(/\s/g, ''))) errors.telephone = t.errTel;
+    if (!formData.type) errors.type = t.errType;
+    if (!formData.message.trim()) errors.message = t.errMessage;
     setFieldErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -47,7 +156,7 @@ export default function Contact() {
       await sendContactEmail(formData);
       setSubmitted(true);
     } catch {
-      setError('Une erreur est survenue. Appelez-nous au 06 79 44 71 11 ou envoyez un email à darkom-debarras@hotmail.com');
+      setError(t.sendError);
     } finally {
       setSending(false);
     }
@@ -78,13 +187,13 @@ export default function Contact() {
               </svg>
             </div>
             <h1 className="text-3xl font-bold text-primary mb-4">
-              Message envoyé !
+              {t.successTitle}
             </h1>
             <p className="text-muted mb-8">
-              Merci pour votre demande. Nous vous recontacterons sous 24h pour discuter de votre projet de débarras.
+              {t.successText}
             </p>
-            <Button to="/" variant="outline">
-              Retour à l'accueil
+            <Button to={prefix || '/'} variant="outline">
+              {t.successCta}
             </Button>
           </div>
         </section>
@@ -97,19 +206,17 @@ export default function Contact() {
       <div className="relative h-48 sm:h-64 md:h-80 overflow-hidden">
         <img
           src="https://images.pexels.com/photos/3760514/pexels-photo-3760514.jpeg?auto=fit&crop=w=1600&q=80"
-          alt="Service client professionnel"
+          alt={t.heroImageAlt}
           loading="lazy"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-primary/85 flex items-center justify-center px-4">
           <div className="text-center">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-4 [text-shadow:0_2px_8px_rgba(0,0,0,0.45)]">
-              Parlons de votre projet
+              {t.heroTitle}
             </h1>
             <p className="text-white/80 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
-              {useSimulator
-                ? 'Répondez à quelques questions pour obtenir une estimation personnalisée'
-                : 'Décrivez votre besoin et nous vous recontacterons rapidement'}
+              {useSimulator ? t.heroSubSim : t.heroSubForm}
             </p>
           </div>
         </div>
@@ -135,7 +242,7 @@ export default function Contact() {
                   <svg aria-hidden="true" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                   </svg>
-                  Simulateur rapide
+                  {t.tabSimulator}
                 </span>
               </button>
               <button
@@ -150,7 +257,7 @@ export default function Contact() {
                   <svg aria-hidden="true" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h7" />
                   </svg>
-                  Formulaire classique
+                  {t.tabForm}
                 </span>
               </button>
             </div>
@@ -168,7 +275,7 @@ export default function Contact() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                       <div>
                         <label htmlFor="nom" className="block text-sm font-medium text-body mb-2">
-                          Nom complet *
+                          {t.labelNom}
                         </label>
                         <input
                           type="text"
@@ -178,7 +285,7 @@ export default function Contact() {
                           value={formData.nom}
                           onChange={handleChange}
                           className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary-light focus:ring-2 focus:ring-primary-light/20 outline-none transition-all"
-                          placeholder="Votre nom"
+                          placeholder={t.placeholderNom}
                           aria-invalid={!!fieldErrors.nom}
                           aria-describedby={fieldErrors.nom ? 'err-nom' : undefined}
                         />
@@ -186,7 +293,7 @@ export default function Contact() {
                       </div>
                       <div>
                         <label htmlFor="telephone" className="block text-sm font-medium text-body mb-2">
-                          Téléphone *
+                          {t.labelTel}
                         </label>
                         <input
                           type="tel"
@@ -196,7 +303,7 @@ export default function Contact() {
                           value={formData.telephone}
                           onChange={handleChange}
                           className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary-light focus:ring-2 focus:ring-primary-light/20 outline-none transition-all"
-                          placeholder="06 XX XX XX XX"
+                          placeholder={t.placeholderTel}
                           aria-invalid={!!fieldErrors.telephone}
                           aria-describedby={fieldErrors.telephone ? 'err-telephone' : undefined}
                         />
@@ -207,7 +314,7 @@ export default function Contact() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                       <div>
                         <label htmlFor="email" className="block text-sm font-medium text-body mb-2">
-                          Email *
+                          {t.labelEmail}
                         </label>
                         <input
                           type="email"
@@ -217,7 +324,7 @@ export default function Contact() {
                           value={formData.email}
                           onChange={handleChange}
                           className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary-light focus:ring-2 focus:ring-primary-light/20 outline-none transition-all"
-                          placeholder="votre@email.fr"
+                          placeholder={t.placeholderEmail}
                           aria-invalid={!!fieldErrors.email}
                           aria-describedby={fieldErrors.email ? 'err-email' : undefined}
                         />
@@ -225,7 +332,7 @@ export default function Contact() {
                       </div>
                       <div>
                         <label htmlFor="type" className="block text-sm font-medium text-body mb-2">
-                          Type de débarras *
+                          {t.labelType}
                         </label>
                         <select
                           id="type"
@@ -237,13 +344,10 @@ export default function Contact() {
                           aria-invalid={!!fieldErrors.type}
                           aria-describedby={fieldErrors.type ? 'err-type' : undefined}
                         >
-                          <option value="">Sélectionnez...</option>
-                          <option value="maison">Débarras maison/appartement</option>
-                          <option value="cave">Vide cave/grenier/garage</option>
-                          <option value="succession">Succession</option>
-                          <option value="professionnel">Local professionnel</option>
-                          <option value="sinistre">Nettoyage après sinistre</option>
-                          <option value="autre">Autre</option>
+                          <option value="">{t.selectDefault}</option>
+                          {t.types.map((opt) => (
+                            <option key={opt.value} value={opt.value}>{opt.label}</option>
+                          ))}
                         </select>
                         {fieldErrors.type && <p id="err-type" className="text-error text-xs mt-1">{fieldErrors.type}</p>}
                       </div>
@@ -251,7 +355,7 @@ export default function Contact() {
 
                     <div className="mb-6">
                       <label htmlFor="message" className="block text-sm font-medium text-body mb-2">
-                        Message *
+                        {t.labelMessage}
                       </label>
                       <textarea
                         id="message"
@@ -261,7 +365,7 @@ export default function Contact() {
                         onChange={handleChange}
                         rows={5}
                         className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary-light focus:ring-2 focus:ring-primary-light/20 outline-none transition-all resize-none"
-                        placeholder="Décrivez votre projet (surface, volume approximatif, urgence, etc.)"
+                        placeholder={t.placeholderMessage}
                         aria-invalid={!!fieldErrors.message}
                         aria-describedby={fieldErrors.message ? 'err-message' : undefined}
                       />
@@ -272,14 +376,14 @@ export default function Contact() {
                       <p className="text-error text-sm mb-4 text-center">{error}</p>
                     )}
                     <Button type="submit" variant="primary" className="w-full">
-                      {sending ? 'Envoi en cours...' : 'Envoyer ma demande de devis'}
+                      {sending ? t.sending : t.submit}
                     </Button>
                   </form>
                 </div>
 
                 <div>
                   <div className="bg-white rounded-2xl p-8 shadow-lg mb-6">
-                    <h3 className="text-lg font-bold text-primary mb-6">Nos coordonnées</h3>
+                    <h3 className="text-lg font-bold text-primary mb-6">{t.coordsTitle}</h3>
 
                     <div className="space-y-4">
                       <div className="flex items-start gap-4">
@@ -290,8 +394,8 @@ export default function Contact() {
                           </svg>
                         </div>
                         <div>
-                          <p className="font-medium text-primary">Adresse</p>
-                          <p className="text-muted text-sm">74250 Fillinges, Haute-Savoie</p>
+                          <p className="font-medium text-primary">{t.addressLabel}</p>
+                          <p className="text-muted text-sm">{t.addressValue}</p>
                         </div>
                       </div>
 
@@ -302,8 +406,8 @@ export default function Contact() {
                           </svg>
                         </div>
                         <div>
-                          <p className="font-medium text-primary">Téléphone</p>
-                          <a href="tel:+33679447111" className="text-muted text-sm hover:text-primary-light">
+                          <p className="font-medium text-primary">{t.phoneLabel}</p>
+                          <a href="tel:+336****7111" className="text-muted text-sm hover:text-primary-light">
                             06 79 44 71 11
                           </a>
                         </div>
@@ -316,7 +420,7 @@ export default function Contact() {
                           </svg>
                         </div>
                         <div>
-                          <p className="font-medium text-primary">Email</p>
+                          <p className="font-medium text-primary">{t.emailLabel}</p>
                           <a href="mailto:darkom-debarras@hotmail.com" className="text-muted text-sm hover:text-primary-light">
                             darkom-debarras@hotmail.com
                           </a>
@@ -330,26 +434,26 @@ export default function Contact() {
                           </svg>
                         </div>
                         <div>
-                          <p className="font-medium text-primary">Disponibilité</p>
-                          <p className="text-muted text-sm">Intervention 48-72h</p>
+                          <p className="font-medium text-primary">{t.availabilityLabel}</p>
+                          <p className="text-muted text-sm">{t.availabilityValue}</p>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div className="bg-primary rounded-2xl p-8 text-white">
-                    <h3 className="text-lg font-bold mb-4 text-white">Besoin urgent ?</h3>
+                    <h3 className="text-lg font-bold mb-4 text-white">{t.urgentTitle}</h3>
                     <p className="text-white/70 text-sm mb-6">
-                      Nous comprenons que certains débarras ne peuvent pas attendre. Appelez-nous directement pour une intervention rapide.
+                      {t.urgentText}
                     </p>
                     <a
-                      href="tel:+33679447111"
+                      href="tel:+336****7111"
                       className="inline-flex items-center justify-center w-full px-6 py-3 bg-accent hover:bg-accent-light rounded-lg font-semibold transition-colors"
                     >
                       <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.047 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
-                      Appeler le 06 79 44 71 11
+                      {t.urgentCta}
                     </a>
                   </div>
                 </div>

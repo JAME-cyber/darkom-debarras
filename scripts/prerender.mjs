@@ -25,6 +25,16 @@ const routes = [
   '/mentions-legales',
   '/politique-de-confidentialite',
   '/404',
+  '/en',
+  '/en/services',
+  '/en/realisations',
+  '/en/tarifs',
+  '/en/a-propos',
+  '/en/contact',
+  '/en/faq',
+  '/en/guide-succession',
+  '/en/mentions-legales',
+  '/en/politique-de-confidentialite',
 ];
 
 const template = await readFile(templatePath, 'utf-8');
@@ -48,6 +58,8 @@ async function renderRoute(url) {
   let outputRelative;
   if (url === '/') {
     outputRelative = 'index.html';
+  } else if (url === '/en') {
+    outputRelative = 'en/index.html';
   } else if (url === '/404') {
     outputRelative = '404.html';
   } else {
