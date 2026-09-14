@@ -1,5 +1,5 @@
 import type { StepProps } from './types';
-import { SERVICE_TYPES, VOLUME_ESTIMATES, CLEANING_OPTIONS, OBJECT_OPTIONS, estimatePrice } from './types';
+import { SERVICE_TYPES, VOLUME_ESTIMATES, OBJECT_OPTIONS, estimatePrice } from './types';
 
 const BIEN_LABELS: Record<string, string> = {
   maison: 'Maison',
@@ -31,7 +31,6 @@ const ACCESSIBLE_LABELS: Record<string, string> = {
 export default function StepRecapitulatif({ data, onNext }: StepProps) {
   const selectedService = SERVICE_TYPES[data.typeBien || ''];
   const selectedVolume = VOLUME_ESTIMATES[data.volume || ''];
-  const selectedCleaning = CLEANING_OPTIONS.find((o) => o.id === data.optionNettoyage);
   const selectedObjects = OBJECT_OPTIONS.filter((o) => (data.objetsSpeciaux || []).includes(o.id));
   const price = estimatePrice(data);
 
@@ -43,7 +42,6 @@ export default function StepRecapitulatif({ data, onNext }: StepProps) {
     { label: 'Ascenseur', value: ASCENSEUR_LABELS[data.ascenseur || ''] || '-' },
     { label: 'Accès', value: ACCESSIBLE_LABELS[data.accessible || ''] || '-' },
     { label: 'Objets', value: selectedObjects.map((o) => o.label).join(', ') || '-' },
-    { label: 'Nettoyage', value: selectedCleaning?.label || 'Non' },
     { label: 'Localisation', value: data.lieu ? `${data.lieu} (${data.codePostal})` : '-' },
     { label: 'Nom', value: data.nom || '-' },
     { label: 'E-mail', value: data.email || '-' },
@@ -67,6 +65,10 @@ export default function StepRecapitulatif({ data, onNext }: StepProps) {
       <div className="simulator-price-estimate">
         <span className="simulator-price-label">Devis estimatif</span>
         <span className="simulator-price-value">{price.min}€ - {price.max}€</span>
+        <span className="simulator-price-info">
+          {price.volumeMin}-{price.volumeMax} m³ × 55 €/m³
+          {price.supplements > 0 ? ` + ${price.supplements} € (accès/étage)` : ''} · hors valorisation des biens
+        </span>
         <span className="simulator-price-info">Estimation indicative, prix final confirmé par téléphone</span>
       </div>
 

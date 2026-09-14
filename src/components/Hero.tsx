@@ -42,7 +42,7 @@ export default function Hero() {
                 <p className="text-xs sm:text-sm text-muted">Assurée & garantit</p>
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-2xl sm:text-3xl font-bold text-primary">100+</p>
+                <p className="text-2xl sm:text-3xl font-bold text-primary">25</p>
                 <p className="text-xs sm:text-sm text-muted">Clients satisfaits</p>
               </div>
               <div className="flex-1 min-w-0">

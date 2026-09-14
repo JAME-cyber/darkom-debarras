@@ -6,7 +6,6 @@ import StepBien from './StepBien';
 import StepVolume from './StepVolume';
 import StepAccessibilite from './StepAccessibilite';
 import StepObjets from './StepObjets';
-import StepNettoyage from './StepNettoyage';
 import StepLocalisation from './StepLocalisation';
 import StepContact from './StepContact';
 import StepRecapitulatif from './StepRecapitulatif';
@@ -37,7 +36,6 @@ const STEPS = [
   { key: 'volume', component: StepVolume, title: 'Volume à débarrasser' },
   { key: 'accessibilite', component: StepAccessibilite, title: 'Accessibilité' },
   { key: 'objets', component: StepObjets, title: 'Objets à trier' },
-  { key: 'nettoyage', component: StepNettoyage, title: 'Option nettoyage' },
   { key: 'localisation', component: StepLocalisation, title: 'Localisation' },
   { key: 'contact', component: StepContact, title: 'Vos coordonnées' },
   { key: 'recap', component: StepRecapitulatif, title: 'Récapitulatif' },

@@ -61,21 +61,28 @@ export const VOLUME_ESTIMATES: Record<string, string> = {
   't1-t2': '15-30 m³',
   't3-t4': '30-60 m³',
   't5+': '60-100+ m³',
-  'cave': '10-25 m³',
-  'grenier': '15-40 m³',
-  'garage': '15-35 m³',
+  'cave': '5-15 m³',
+  'grenier': '5-15 m³',
+  'garage': '5-15 m³',
   'local': '30-100+ m³',
 };
 
-const VOLUME_PRICES: Record<string, [number, number]> = {
-  'studio': [200, 400],
-  't1-t2': [400, 800],
-  't3-t4': [800, 1500],
-  't5+': [1500, 3000],
-  'cave': [200, 500],
-  'grenier': [300, 700],
-  'garage': [250, 600],
-  'local': [500, 2000],
+/**
+ * Grille tarifaire alignée sur la page /tarifs : 55 €/m³.
+ * La fourchette découle directement de la bande de volume sélectionnée,
+ * plus les suppléments accès/étage.
+ */
+export const PRIX_PAR_M3 = 55;
+
+const VOLUME_BANDS: Record<string, [number, number]> = {
+  'studio': [5, 15],
+  't1-t2': [15, 30],
+  't3-t4': [30, 60],
+  't5+': [60, 100],
+  'cave': [5, 15],
+  'grenier': [5, 15],
+  'garage': [5, 15],
+  'local': [30, 100],
 };
 
 const ETAGE_SUPPLEMENT: Record<string, number> = {
@@ -91,12 +98,28 @@ const ACCESSIBLE_SUPPLEMENT: Record<string, number> = {
   'tres_difficile': 250,
 };
 
-export function estimatePrice(data: SimulatorData): { min: number; max: number } {
-  const [baseMin, baseMax] = VOLUME_PRICES[data.volume] || [300, 800];
+const round25 = (n: number): number => Math.round(n / 25) * 25;
+
+export interface PriceEstimate {
+  min: number;
+  max: number;
+  volumeMin: number;
+  volumeMax: number;
+  supplements: number;
+}
+
+export function estimatePrice(data: SimulatorData): PriceEstimate {
+  const [vMin, vMax] = VOLUME_BANDS[data.volume] || [10, 30];
   const etageSupp = data.ascenseur === 'non' ? ETAGE_SUPPLEMENT[data.etage] || 0 : 0;
   const accessSupp = ACCESSIBLE_SUPPLEMENT[data.accessible] || 0;
-  const cleaning = CLEANING_OPTIONS.find((o) => o.id === data.optionNettoyage)?.price || 0;
-  return { min: baseMin + etageSupp + accessSupp + cleaning, max: baseMax + etageSupp + accessSupp + cleaning };
+  const supplements = etageSupp + accessSupp;
+  return {
+    min: round25(vMin * PRIX_PAR_M3) + supplements,
+    max: round25(vMax * PRIX_PAR_M3) + supplements,
+    volumeMin: vMin,
+    volumeMax: vMax,
+    supplements,
+  };
 }
 
 export const SERVICE_TYPES: Record<string, { label: string; emoji: string; description: string }> = {
