@@ -12,8 +12,38 @@ interface SEOProps {
 const DEFAULT_OG_IMAGE = '/favicon.png';
 const BASE_URL = 'https://darkom-debarras.fr';
 
+/**
+ * Collecteur SEO pour le pré-rendu statique (SSR). `useEffect` ne s'exécute
+ * pas côté serveur : on capture donc les métadonnées pendant le rendu pour
+ * que scripts/prerender.mjs puisse les injecter dans le HTML de chaque page
+ * (title, description, canonical, hreflang, og:*). Ignoré côté navigateur.
+ */
+export interface SSRSeo {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+  ogImage: string;
+  lang: 'fr' | 'en';
+  hreflang: { lang: string; href: string }[];
+}
+export const SSR_SEO: { current: SSRSeo | null } = { current: null };
+
 export default function useSEO({ title, description, canonical, ogImage }: SEOProps) {
   const { lang, prefix } = useLang();
+
+  // Capture SSR (pré-rendu) : pas de DOM disponible.
+  if (typeof document === 'undefined') {
+    const canonicalUrl = canonical ? `${BASE_URL}${prefix}${canonical}` : undefined;
+    const hreflang: { lang: string; href: string }[] = [];
+    if (canonical) {
+      hreflang.push(
+        { lang: 'fr', href: `${BASE_URL}${canonical === '/' ? '/' : canonical}` },
+        { lang: 'en', href: `${BASE_URL}/en${canonical === '/' ? '' : canonical}` },
+        { lang: 'x-default', href: `${BASE_URL}${canonical === '/' ? '/' : canonical}` }
+      );
+    }
+    SSR_SEO.current = { title, description, canonicalUrl, ogImage: ogImage || DEFAULT_OG_IMAGE, lang, hreflang };
+  }
 
   useEffect(() => {
     document.title = title;

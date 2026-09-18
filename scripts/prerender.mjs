@@ -52,8 +52,40 @@ if (typeof render !== 'function') {
 }
 
 async function renderRoute(url) {
-  const { appHtml } = await render(url);
-  const html = template.replace(placeholder, appHtml);
+  const { appHtml, seo } = await render(url);
+  let html = template.replace(placeholder, appHtml);
+
+  // Injection des métadonnées SEO capturées pendant le rendu SSR
+  // (title, description, canonical, hreflang, og:*) — sans cela toutes les
+  // pages pré-rendues partagent le head générique du template et Google
+  // n'a ni canonical ni description distincts par page.
+  if (seo) {
+    const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+    const title = esc(seo.title);
+    const description = esc(seo.description);
+
+    // 1. Remplacer le title et la description génériques du template.
+    html = html.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`);
+    html = html.replace(
+      /<meta name="description" content="[^"]*"/,
+      `<meta name="description" content="${description}"`
+    );
+
+    // 2. Injecter canonical + hreflang + og:* juste après le title.
+    const head = [];
+    if (seo.canonicalUrl) {
+      head.push(`<link rel="canonical" href="${esc(seo.canonicalUrl)}" />`);
+    }
+    for (const alt of seo.hreflang) {
+      head.push(`<link rel="alternate" hreflang="${esc(alt.lang)}" href="${esc(alt.href)}" />`);
+    }
+    head.push(`<meta property="og:title" content="${title}" />`);
+    head.push(`<meta property="og:description" content="${description}" />`);
+    head.push(`<meta property="og:image" content="${esc(seo.ogImage)}" />`);
+    head.push(`<meta property="og:type" content="website" />`);
+    head.push(`<meta property="og:locale" content="${seo.lang === 'en' ? 'en_GB' : 'fr_FR'}" />`);
+    html = html.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>\n    ${head.join('\n    ')}`);
+  }
 
   let outputRelative;
   if (url === '/') {
