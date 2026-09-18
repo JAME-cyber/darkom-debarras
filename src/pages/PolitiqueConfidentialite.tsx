@@ -135,6 +135,7 @@ export default function PolitiqueConfidentialite() {
     title: t.seo.title,
     description: t.seo.description,
     canonical: '/politique-de-confidentialite',
+    noindex: true,
   });
 
   return (

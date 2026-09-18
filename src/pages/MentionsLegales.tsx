@@ -125,6 +125,7 @@ export default function MentionsLegales() {
     title: t.seo.title,
     description: t.seo.description,
     canonical: '/mentions-legales',
+    noindex: true,
   });
 
   return (

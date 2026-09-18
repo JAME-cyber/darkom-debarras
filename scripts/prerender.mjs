@@ -71,6 +71,15 @@ async function renderRoute(url) {
       `<meta name="description" content="${description}"`
     );
 
+    // 0. Pages légales : remplacer le meta robots générique par noindex
+    // (la page reste en ligne mais sort de l'index des moteurs de recherche).
+    if (seo.noindex) {
+      html = html.replace(
+        /<meta name="robots" content="[^"]*"/,
+        '<meta name="robots" content="noindex, follow"'
+      );
+    }
+
     // 2. Injecter canonical + hreflang + og:* juste après le title.
     const head = [];
     if (seo.canonicalUrl) {

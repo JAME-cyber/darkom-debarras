@@ -7,6 +7,8 @@ interface SEOProps {
   /** Path without language prefix, e.g. '/tarifs'. Hreflang pairs are derived from it. */
   canonical?: string;
   ogImage?: string;
+  /** true = sort la page de l'index des moteurs (meta robots noindex). */
+  noindex?: boolean;
 }
 
 const DEFAULT_OG_IMAGE = '/favicon.png';
@@ -25,10 +27,11 @@ export interface SSRSeo {
   ogImage: string;
   lang: 'fr' | 'en';
   hreflang: { lang: string; href: string }[];
+  noindex?: boolean;
 }
 export const SSR_SEO: { current: SSRSeo | null } = { current: null };
 
-export default function useSEO({ title, description, canonical, ogImage }: SEOProps) {
+export default function useSEO({ title, description, canonical, ogImage, noindex }: SEOProps) {
   const { lang, prefix } = useLang();
 
   // Capture SSR (pré-rendu) : pas de DOM disponible.
@@ -42,7 +45,7 @@ export default function useSEO({ title, description, canonical, ogImage }: SEOPr
         { lang: 'x-default', href: `${BASE_URL}${canonical === '/' ? '/' : canonical}` }
       );
     }
-    SSR_SEO.current = { title, description, canonicalUrl, ogImage: ogImage || DEFAULT_OG_IMAGE, lang, hreflang };
+    SSR_SEO.current = { title, description, canonicalUrl, ogImage: ogImage || DEFAULT_OG_IMAGE, lang, hreflang, noindex };
   }
 
   useEffect(() => {
