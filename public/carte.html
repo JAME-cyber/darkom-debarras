@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Darkom Débarras — Laurie Decouvette</title>
+<style>
+  :root {
+    --primary: #143d24; --primary-l: #1a6530; --accent: #a0ab37;
+    --surface: #f7f8f4; --muted: #6b7568; --card: #ffffff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html { -webkit-text-size-adjust:100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display','Segoe UI', Roboto, sans-serif;
+    background:#0d2a18; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px 16px;
+    position:relative; overflow-x:hidden;
+  }
+  /* ---- gradient mesh background (Figma-style ambient blobs) ---- */
+  .blob { position:fixed; pointer-events:none; z-index:0; border-radius:50%; }
+  .b1 { width:520px; height:520px; top:-180px; left:-160px;
+        background:radial-gradient(circle, rgba(26,101,48,.55) 0%, rgba(26,101,48,0) 70%); }
+  .b2 { width:480px; height:480px; bottom:-160px; right:-140px;
+        background:radial-gradient(circle, rgba(160,171,55,.38) 0%, rgba(160,171,55,0) 70%); }
+  .b3 { width:360px; height:360px; top:38%; right:-120px;
+        background:radial-gradient(circle, rgba(15,81,50,.45) 0%, rgba(15,81,50,0) 70%); }
+
+  .card {
+    position:relative; z-index:1; width:100%; max-width:400px;
+    background:linear-gradient(180deg,#203d2c,#182f22); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
+    border:1px solid rgba(255,255,255,.14); border-radius:32px; overflow:hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.18);
+    /* no entrance animation */
+  }
+  
+
+  .head { padding:36px 28px 8px; text-align:center; position:relative; }
+  .badge {
+    display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:100px;
+    background:rgba(160,171,55,.16); border:1px solid rgba(160,171,55,.35);
+    color:#d6e08a; font-size:11px; font-weight:600; letter-spacing:.6px; text-transform:uppercase;
+  }
+  .badge .dot { width:6px; height:6px; border-radius:50%; background:#a0ab37; box-shadow:0 0 8px #a0ab37; }
+  .logo-plate {
+    margin:18px auto 0; display:inline-flex; align-items:center; justify-content:center;
+    background:rgba(255,255,255,.97); border-radius:18px; padding:12px 20px;
+    box-shadow:0 10px 28px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.6);
+  }
+  .logo-plate img { width:200px; height:auto; display:block; border-radius:6px; }
+  .tagline { color:rgba(255,255,255,.72); font-size:13px; margin-top:6px; letter-spacing:.3px; }
+
+  .idcard {
+    margin:22px 20px 0; padding:22px; border-radius:22px; text-align:center;
+    background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+    border:1px solid rgba(255,255,255,.12);
+  }
+  .avatar {
+    width:72px; height:72px; margin:0 auto 12px; border-radius:26px;
+    background:linear-gradient(135deg, var(--accent), #8a9429);
+    display:flex; align-items:center; justify-content:center;
+    font-size:26px; font-weight:800; color:#12290f;
+    box-shadow:0 10px 26px rgba(160,171,55,.35), inset 0 1px 0 rgba(255,255,255,.4);
+  }
+  .name { color:#fff; font-size:19px; font-weight:700; letter-spacing:.2px; }
+  .role { color:rgba(255,255,255,.6); font-size:12.5px; margin-top:3px; }
+  .divider { height:1px; margin:16px auto 0; width:56px; background:linear-gradient(90deg, transparent, var(--accent), transparent); }
+
+  .body { padding:18px 20px 24px; display:flex; flex-direction:column; gap:10px; }
+  .btn {
+    display:flex; align-items:center; gap:12px; padding:15px 16px; border-radius:16px;
+    text-decoration:none; font-weight:650; font-size:14.5px; letter-spacing:.1px;
+    transition:transform .15s ease, background .2s ease, box-shadow .2s ease;
+    position:relative; overflow:hidden;
+  }
+  .btn:active { transform:scale(.975); }
+  .btn svg { width:20px; height:20px; flex-shrink:0; }
+  .btn .lbl { flex:1; text-align:left; }
+  .btn .arr { font-size:16px; opacity:.55; }
+  .btn-save {
+    background:linear-gradient(135deg, #227a3d, #1a6530); color:#fff; justify-content:center; font-size:15.5px;
+    box-shadow:0 10px 26px rgba(26,101,48,.45), inset 0 1px 0 rgba(255,255,255,.22);
+  }
+  .btn-save:active { box-shadow:0 5px 14px rgba(26,101,48,.4); }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .btn-glass {
+    background:rgba(255,255,255,.08); color:#eef2ea; border:1px solid rgba(255,255,255,.14);
+    backdrop-filter:blur(8px);
+  }
+  .btn-glass svg { color:var(--accent); }
+  .btn-wa { background:#1fae54; color:#fff; box-shadow:0 8px 20px rgba(31,174,84,.35); }
+  .btn-star {
+    background:linear-gradient(135deg, #ffd257, #f5b301); color:#3a2c00; justify-content:center;
+    box-shadow:0 10px 26px rgba(245,179,1,.35), inset 0 1px 0 rgba(255,255,255,.5);
+  }
+
+  .qrs { display:flex; gap:10px; margin-top:2px; }
+  .qr {
+    flex:1; background:rgba(255,255,255,.96); border-radius:18px; padding:12px 10px 10px; text-align:center;
+    border:1px solid rgba(255,255,255,.3);
+  }
+  .qr img { width:100%; max-width:118px; border-radius:8px; }
+  .qr p { font-size:10px; color:#4a554a; margin-top:7px; line-height:1.4; font-weight:600; }
+
+  .foot { text-align:center; padding:2px 26px 24px; }
+  .foot .sep { height:1px; background:rgba(255,255,255,.1); margin-bottom:14px; }
+  .foot p { color:rgba(255,255,255,.62); font-size:11px; line-height:1.7; }
+  .foot a { color:var(--accent); text-decoration:none; font-weight:600; }
+@media (prefers-reduced-motion: reduce){ .card{animation:none;} }</style>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+
+<div class="card">
+  <div class="head">
+    <span class="badge"><span class="dot"></span>Devis gratuit sous 24h</span>
+    <div class="logo-plate"><img src="data:image/webp;base64,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" alt="Logo Darkom Débarras"></div>
+    <div class="tagline">Débarras & vidage maison — Haute-Savoie</div>
+  </div>
+
+  <div class="idcard">
+    <div class="avatar">LD</div>
+    <div class="name">Laurie Decouvette</div>
+    <div class="role">Gérante · Fillinges (74250)</div>
+    <div class="divider"></div>
+  </div>
+
+  <div class="body">
+    <a class="btn btn-save" href="data:text/vcard;base64,QkVHSU46VkNBUkQKVkVSU0lPTjozLjAKTjpEZWNvdXZldHRlO0xhdXJpZTs7OwpGTjpMYXVyaWUgRGVjb3V2ZXR0ZSDigJQgRGFya29tIETDqWJhcnJhcwpPUkc6RGFya29tIETDqWJhcnJhcwpUSVRMRTpHw6lyYW50ZSDigJQgZMOpYmFycmFzICYgdmlkYWdlIG1haXNvbgpURUw7VFlQRT1DRUxMOiszMzY3OTQ0NzExMQpFTUFJTDpkYXJrb20tZGViYXJyYXNAaG90bWFpbC5jb20KVVJMOmh0dHBzOi8vZGFya29tLWRlYmFycmFzLmZyCkFEUjo7O0ZpbGxpbmdlczs7NzQyNTA7RnJhbmNlCk5PVEU6RMOpYmFycmFzICYgdmlkYWdlIG1haXNvbiBlbiBIYXV0ZS1TYXZvaWUuIERldmlzIDI0aCDigJQgZGFya29tLWRlYmFycmFzLmZyCkVORDpWQ0FSRA==" download="Darkom-Laurie.vcf">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+      <span class="lbl">Enregistrer le contact</span><span class="arr">↓</span>
+    </a>
+
+    <div class="grid2">
+      <a class="btn btn-glass" href="tel:+33679447111">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="lbl">Appeler</span>
+      </a>
+      <a class="btn btn-wa" href="https://wa.me/33679447111">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        <span class="lbl">WhatsApp</span>
+      </a>
+    </div>
+
+    <div class="grid2">
+      <a class="btn btn-glass" href="https://darkom-debarras.fr">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span class="lbl">Site & devis</span>
+      </a>
+      <a class="btn btn-glass" href="https://www.google.com/maps/search/?api=1&query=Darkom+Débarras+Fillinges">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        <span class="lbl">Itinéraire</span>
+      </a>
+    </div>
+
+    <a class="btn btn-star" href="https://g.page/r/CewNMcXM9W-oECE/review">
+      <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <span class="lbl">Laisser un avis Google · 30 sec</span>
+    </a>
+
+    <div class="qrs">
+      <div class="qr"><img src="data:image/png;base64,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" alt="QR contact"><p>Scan — enregistrer le contact</p></div>
+      <div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPgAAAD4AQAAAADpqhamAAABfElEQVR4nOWYwY4DMQhDn0fz/7/sPQDJaLXqLaE7aVU1woc4hIBB5uPn+gz/e5w6v42NscEe1m5+q/E7PSCEXO6Qy9rNb8P50YgCIyvXYe3mtxN3Xbx69u/FDcgg4b/w1fv34DczBSIjY9nD2s1vX/7/9U1rN7/19z9vf7z7mRDb+a3H49CKqq/IgJZA0jfwW4vfMO5bxggR/9YX8FuNy8IRA+bpiawC3fx2nL8koIVV9T9W7fzW48bx1KlAEDayT9C/F0TvMx++wg2CA/Kfss+Bcf2OHuAY/Z+h73zxo/4dEf+yqvEBUd2fHIWhnd8G/TvGHuQUJMcA5gD9O+VvyX6nD8Ix3fw26D8/smDmPlIUuJ3fnvhnTv4YQ7Aj4l8j/qsGVhY8Q//d1fTayEhDDMevm9+e959qLxJASR+j98f/BaX+pyfCdET9v+cyEp+rFUInxP8TV/Y8Bsf6/fXvOf8tzZsjEGG9/v3H/IM8PH40hD4h/mf979m/G/8BbgvIq5gCLgoAAAAASUVORK5CYII=" alt="QR avis"><p>Scan — avis Google</p></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="sep"></div>
+    <p>Maison · Cave · Grenier · Succession · Valorisation déduite<br>
+    darkom-debarras@hotmail.com · <a href="https://darkom-debarras.fr">darkom-debarras.fr</a></p>
+  </div>
+</div>
+</body>
+</html>
