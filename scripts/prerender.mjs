@@ -93,6 +93,15 @@ async function renderRoute(url) {
     head.push(`<meta property="og:image" content="${esc(seo.ogImage)}" />`);
     head.push(`<meta property="og:type" content="website" />`);
     head.push(`<meta property="og:locale" content="${seo.lang === 'en' ? 'en_GB' : 'fr_FR'}" />`);
+
+    // 3. Schema JSON-LD additionnel capturé pendant le rendu SSR
+    //    (ex. FAQPage sur /faq) — injecté statiquement pour les crawlers.
+    if (seo.jsonLd) {
+      const blocks = Array.isArray(seo.jsonLd) ? seo.jsonLd : [seo.jsonLd];
+      for (const block of blocks) {
+        head.push(`<script type="application/ld+json">${JSON.stringify(block)}</script>`);
+      }
+    }
     html = html.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>\n    ${head.join('\n    ')}`);
   }
 

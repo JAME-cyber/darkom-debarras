@@ -9,6 +9,8 @@ interface SEOProps {
   ogImage?: string;
   /** true = sort la page de l'index des moteurs (meta robots noindex). */
   noindex?: boolean;
+  /** Blocs JSON-LD additionnels (ex. FAQPage) injectés au pré-rendu statique. */
+  jsonLd?: Record<string, unknown>[];
 }
 
 const DEFAULT_OG_IMAGE = '/favicon.png';
@@ -28,10 +30,11 @@ export interface SSRSeo {
   lang: 'fr' | 'en';
   hreflang: { lang: string; href: string }[];
   noindex?: boolean;
+  jsonLd?: Record<string, unknown>[];
 }
 export const SSR_SEO: { current: SSRSeo | null } = { current: null };
 
-export default function useSEO({ title, description, canonical, ogImage, noindex }: SEOProps) {
+export default function useSEO({ title, description, canonical, ogImage, noindex, jsonLd }: SEOProps) {
   const { lang, prefix } = useLang();
 
   // Capture SSR (pré-rendu) : pas de DOM disponible.
@@ -45,7 +48,7 @@ export default function useSEO({ title, description, canonical, ogImage, noindex
         { lang: 'x-default', href: `${BASE_URL}${canonical === '/' ? '/' : canonical}` }
       );
     }
-    SSR_SEO.current = { title, description, canonicalUrl, ogImage: ogImage || DEFAULT_OG_IMAGE, lang, hreflang, noindex };
+    SSR_SEO.current = { title, description, canonicalUrl, ogImage: ogImage || DEFAULT_OG_IMAGE, lang, hreflang, noindex, jsonLd };
   }
 
   useEffect(() => {

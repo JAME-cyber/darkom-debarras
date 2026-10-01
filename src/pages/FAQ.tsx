@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '../components/Button';
 import useSEO from '../hooks/useSEO';
 import { useLang } from '../i18n/LanguageContext';
@@ -174,11 +174,35 @@ export default function FAQ() {
   const { lang, prefix } = useLang();
   const t = content[lang];
 
+  // Schema FAQPage — transmis à useSEO pour injection statique au pré-rendu
+  // (lisible par les crawlers/assistants IA), et injecté côté client en SPA.
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: (lang === 'fr' ? faqItems.fr : faqItems.en).map(item => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  } as const;
+
   useSEO({
     title: t.seo.title,
     description: t.seo.description,
     canonical: '/faq',
+    jsonLd: [faqSchema],
   });
+
+  useEffect(() => {
+    const id = 'faqpage-schema';
+    document.getElementById(id)?.remove();
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = id;
+    script.textContent = JSON.stringify(faqSchema);
+    document.head.appendChild(script);
+    return () => { document.getElementById(id)?.remove(); };
+  }, [lang]);
 
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
