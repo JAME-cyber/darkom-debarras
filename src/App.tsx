@@ -12,6 +12,7 @@ import FAQ from './pages/FAQ';
 import GuideSuccession from './pages/GuideSuccession';
 import MentionsLegales from './pages/MentionsLegales';
 import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite';
+import ZonePage, { ZONES } from './pages/ZonePage';
 import Button from './components/Button';
 import { LanguageProvider, useLang } from './i18n/LanguageContext';
 import { uiContent } from './content/ui';
@@ -48,6 +49,10 @@ function AppRoutes() {
           <Route path="/guide-succession" element={<GuideSuccession />} />
           <Route path="/mentions-legales" element={<MentionsLegales />} />
           <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
+          {/* Pages zone SEO (FR uniquement) */}
+          {ZONES.map((z) => (
+            <Route key={z.slug} path={`/${z.slug}`} element={<ZonePage zone={z} />} />
+          ))}
           {/* English */}
           <Route path="/en" element={<Home />} />
           <Route path="/en/services" element={<Services />} />
