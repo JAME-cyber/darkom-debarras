@@ -1,0 +1,49 @@
+{
+  "name": "Darkom-Debarras | Débarras professionnel Haute-Savoie",
+  "short_name": "Darkom",
+  "description": "Service de débarras professionnel en Haute-Savoie. Maison, appartement, cave, grenier, garage, successions. Intervention rapide 48-72h.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#143d24",
+  "theme_color": "#143d24",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Devis gratuit",
+      "url": "/contact",
+      "description": "Demander un devis de débarras"
+    },
+    {
+      "name": "Tarifs",
+      "url": "/tarifs",
+      "description": "Nos tarifs de débarras"
+    }
+  ]
+}
